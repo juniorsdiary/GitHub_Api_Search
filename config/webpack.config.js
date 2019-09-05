@@ -1,11 +1,14 @@
 const paths = require('./paths');
+
 module.exports = {
   entry: ['@babel/polyfill', paths.appIndex],
   resolve: {
     alias: {
       Components: `${paths.appComponents}`,
+      Modules: `${paths.appModules}`,
       Store: `${paths.appStore}`,
       Assets: `${paths.appAssets}`,
+      Utilities: `${paths.appUtilities}`,
       'react-dom': '@hot-loader/react-dom',
     },
   },
@@ -44,7 +47,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(otf|woff|woff2|ttf|eot)$/,
+        test: /\.(otf|woff|woff2|ttf|eot|svg)$/,
         use: {
           loader: 'file-loader',
           options: {

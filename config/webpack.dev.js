@@ -11,8 +11,8 @@ module.exports = merge(common, {
     filename: '[name].js',
     publicPath: '/',
   },
+  devtool: 'source-map',
   devServer: {
-    port: 1302,
     clientLogLevel: 'silent',
     compress: true,
     overlay: true,
@@ -23,7 +23,6 @@ module.exports = merge(common, {
     noInfo: true,
     open: true,
   },
-  devtool: 'eval-sourcemap',
   module: {
     rules: [
       {
@@ -45,5 +44,5 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: paths.appHtml, favicon: `${paths.appSrc}/favicon.ico` }), new CleanWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin({ template: paths.appHtml, inject: true, favicon: `${paths.appSrc}/favicon.ico` }), new CleanWebpackPlugin()],
 });
