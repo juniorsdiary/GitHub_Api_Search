@@ -1,5 +1,4 @@
 import * as types from '../types';
-import * as constants from 'Utilities';
 
 const initialState = {
   curSearchValue: '',
@@ -18,6 +17,11 @@ export default function appData(state = initialState, action) {
     return {
       ...state,
       activeTab: payload,
+    };
+  } else if (type === types.CHANGE_PER_PAGE_AMOUNT) {
+    return {
+      ...state,
+      curPerPage: payload,
     };
   }
   return state;

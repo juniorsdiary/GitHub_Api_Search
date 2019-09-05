@@ -1,21 +1,21 @@
 export const devideNumber = total_count => {
-  let defidedTotal = String(total_count).split('');
+  let devidedTotal = String(total_count).split('');
 
   let i_1 = 4;
   let i_2 = 7;
 
-  if (defidedTotal.length >= 4) {
-    let replaceV_1 = `${defidedTotal.splice(-i_1, 1)},`;
+  if (devidedTotal.length >= 4) {
+    let replaceV_1 = `${devidedTotal.splice(-i_1, 1)},`;
 
-    defidedTotal.splice(-i_1 + 1, 0, replaceV_1);
+    devidedTotal.splice(-i_1 + 1, 0, replaceV_1);
   }
-  if (defidedTotal.length >= 7) {
-    let replaceV_2 = `${defidedTotal.splice(-i_2, 1)},`;
+  if (devidedTotal.length >= 7) {
+    let replaceV_2 = `${devidedTotal.splice(-i_2, 1)},`;
 
-    defidedTotal.splice(-i_2 + 1, 0, replaceV_2);
+    devidedTotal.splice(-i_2 + 1, 0, replaceV_2);
   }
 
-  return defidedTotal.join('');
+  return devidedTotal.join('');
 };
 
 export const convertLastUpadate = time => {
@@ -44,4 +44,26 @@ export const convertLastUpadate = time => {
 
 export const trimNumbers = number => {
   return number > 1000 ? (number / 1000).toFixed(0) + 'K' : number;
+};
+
+export const definePageIndexes = (pages, perPage, curPage) => {
+  let firstPages = pages > 1 ? [1, 2] : [];
+
+  let lastPages = pages >= 5 ? [pages - 1, pages] : [];
+
+  let middlePages = [];
+
+  for (let pageInd = 3; pageInd <= (pages < 5 ? pages : pages - 2); pageInd++) {
+    if (pages < 9) {
+      middlePages.push(pageInd);
+    } else if ((curPage < 4 && pageInd <= 5) || (curPage >= pages - 5 && pageInd >= pages - 4)) {
+      middlePages.push(pageInd);
+    } else if (curPage <= 6 && pageInd <= curPage + 2) {
+      middlePages.push(pageInd);
+    } else if (curPage > 6 && pageInd <= curPage + 2 && pageInd >= curPage - 2) {
+      middlePages.push(pageInd);
+    }
+  }
+
+  return [firstPages, middlePages, lastPages];
 };

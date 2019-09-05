@@ -21,3 +21,10 @@ export const fetchUsersData = (searchValue, pageInd, perPageNum, sorting, order,
     });
   });
 };
+
+export const changeUsersPage = number => {
+  return {
+    type: types.CHANGE_CUR_PAGE,
+    payload: number,
+  };
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, TabItem, Title } from 'Modules';
+import { Container, TabItem, Text } from 'Modules';
 import { trimNumbers } from 'Utilities';
 import { setTabActive } from 'Store';
 
@@ -11,17 +11,13 @@ import { setTabActive } from 'Store';
 
 const Tabs = ({ curAPI, totalUsers, totalRepos, activeTab, setTabActive }) => {
   return (
-    <Container maxWidth={'lg'} row justify='center'>
+    <Container maxWidth={'lg'} row justify='center' align='center'>
       <TabItem active={activeTab === 'users'} onClick={() => setTabActive('users')}>
-        <Title size='1.5em' as='p'>
-          Users
-        </Title>
+        <Text size='1.5em'>Users</Text>
         <span className='total_found_items'>{trimNumbers(totalUsers)}</span>
       </TabItem>
       <TabItem active={activeTab === 'repos'} onClick={() => setTabActive('repos')}>
-        <Title size='1.5em' as='p'>
-          Repositories
-        </Title>
+        <Text size='1.5em'>Repositories</Text>
         <span>{trimNumbers(totalRepos)}</span>
       </TabItem>
     </Container>

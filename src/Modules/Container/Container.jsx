@@ -25,10 +25,10 @@ const StyledContainer = styled.div`
 
 const sizes = [{ size: 'xs', value: 560 }, { size: 'sm', value: 780 }, { size: 'md', value: 980 }, { size: 'lg', value: 1100 }];
 
-const Container = ({ children, maxWidth = 'xs', ...props }) => {
+const Container = ({ children, maxWidth = 'xs', row = true, ...props }) => {
   const value = sizes.find(size => size.size === maxWidth).value;
   return (
-    <StyledContainer maxWidth={value} {...props}>
+    <StyledContainer maxWidth={value} row={row} {...props}>
       {children}
     </StyledContainer>
   );
@@ -36,5 +36,6 @@ const Container = ({ children, maxWidth = 'xs', ...props }) => {
 Container.propTypes = {
   children: PropTypes.node,
   maxWidth: PropTypes.string,
+  row: PropTypes.bool,
 };
 export default Container;

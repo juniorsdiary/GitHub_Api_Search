@@ -71,6 +71,11 @@ export default function usersData(state = initialState, action) {
         cmd,
       },
     };
+  } else if (type === types.CHANGE_CUR_PAGE) {
+    return {
+      ...state,
+      curPage: payload,
+    };
   }
   return state;
 }

@@ -20,7 +20,7 @@ const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue })
 
   return (
     <FormContainer onSubmit={submitSearch}>
-      <InputField type='text' id='search_input' value={searchValue} onChange={setInputValue} />
+      <InputField size='1.5em' type='text' id='search_input' value={searchValue} onChange={setInputValue} />
       <Button type='submit' id='submit_search'>
         Search
       </Button>

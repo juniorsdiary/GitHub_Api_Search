@@ -1,6 +1,6 @@
 import React from 'react';
-import { SearchComponent, Tabs, TabsContents } from 'Components';
-import { Header, Title, Container } from 'Modules';
+import { SearchComponent, Tabs, TabsContents, Filters } from 'Components';
+import { Header, Text, Container } from 'Modules';
 import { hot } from 'react-hot-loader/root';
 const App = () => {
   // useEffect(() => {
@@ -14,13 +14,14 @@ const App = () => {
   return (
     <>
       <Header background='#24292e'>
-        <Title color='white' size='2em' align='center' bold>
+        <Text color='white' size='2em' align='center' bold>
           GitHub Search App
-        </Title>
+        </Text>
       </Header>
       <SearchComponent />
       <Container maxWidth='lg' column>
         <Tabs />
+        <Filters />
         <TabsContents />
       </Container>
     </>

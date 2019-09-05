@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 export const changePerPageAmount = perPageNum => {
-  return { type: types.CHANGE_PER_PAGE_AMOUNT, perPageNum };
+  return { type: types.CHANGE_PER_PAGE_AMOUNT, payload: perPageNum };
 };
 export const setSearchValue = value => {
   return {

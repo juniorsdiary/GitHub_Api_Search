@@ -1,41 +1,44 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Title, Container, Button } from 'Modules';
+import { Text, Container } from 'Modules';
+import { PageButton } from 'Components';
+import { changePerPageAmount } from 'Store';
 
-const PageButton = styled(Button)`
-  color: #0366d6;
-  margin: 0;
-  padding: 0;
-  min-width: 1em;
-`;
-const PageText = styled(Title)`
-  padding: 5px 10px;
-  margin: 0;
-`;
-
-const Filters = () => {
+const Filters = ({ curPerPageNum, changePage }) => {
   const renderPagesOptions = [10, 25, 50, 100].map(item => (
-    <PageButton
-      key={item}
-      onClick={() => {
-        console.log('text');
-      }}>
-      <PageText align='center' bold size='1.25rem'>
-        {item}
-      </PageText>
+    <PageButton key={item} onClick={() => changePage(item)} active={curPerPageNum === item}>
+      {item}
     </PageButton>
   ));
   return (
-    <Container>
-      <Title>Data per page:</Title>
+    <Container row justify='center' align='center'>
+      <Text size='1.5rem'>Data per page:</Text>
       {renderPagesOptions}
     </Container>
   );
 };
 
 Filters.propTypes = {
-  // : PropTypes.
+  curPerPageNum: PropTypes.number,
+  changePage: PropTypes.func,
 };
 
-export default Filters;
+const mapStateToProps = state => {
+  return {
+    curPerPageNum: state.appData.curPerPage,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changePage: number => {
+      dispatch(changePerPageAmount(number));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Filters);

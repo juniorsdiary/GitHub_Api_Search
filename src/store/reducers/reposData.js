@@ -1,12 +1,18 @@
 import * as types from '../types';
 import { constants } from 'Utilities';
+
 const initialState = {
   id: 1,
-  url_name: `${constants.API_BASE}/search/${constants.REPOS}`,
   title: 'Repositories',
   active: false,
   apidata: [],
   totalCount: 0,
+  curPage: 1,
+  curSorting: {
+    sorting: 'Best Match',
+    order: 'desc',
+    cmd: '',
+  },
   sortingOptions: [
     {
       sortName: 'Best Match',
@@ -54,29 +60,22 @@ export default function reposData(state = initialState, action) {
       apidata: payload.items,
       totalCount: payload.total_count,
     };
+  } else if (type === types.SYNC_REPOS_OPTIONS) {
+    const { pageInd, sorting, order, cmd } = payload;
+    return {
+      ...state,
+      curPage: pageInd,
+      curSorting: {
+        sorting,
+        order,
+        cmd,
+      },
+    };
+  } else if (type === types.CHANGE_CUR_PAGE) {
+    return {
+      ...state,
+      curPage: payload,
+    };
   }
   return state;
 }
-
-//
-// export default function reposData(state = initialState, action) {
-//   switch (action.type) {
-//     case FETCH_DATA:
-//       return {
-//         ...state,
-//         availabelAPI: state.availabelAPI.map(api => (api.url_name === action.url_name ? { ...api, apidata: action.apidata } : { ...api })),
-//         curSearchValue: action.searchValue,
-//         curPage: action.pageInd,
-//         curPerPage: action.perPageNum,
-//         curSorting: { sortName: action.sortName, order: action.order, cmd: action.cmd },
-//       };
-//     case TOOGLE_CARD:
-//       return {
-//         ...state,
-//         availabelAPI: state.availabelAPI.map(item => (item.url_name === action.activeAPI ? { ...item, active: true } : { ...item, active: false })),
-//       };
-//
-//     default:
-//       return state;
-//   }
-// }

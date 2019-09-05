@@ -1,6 +1,6 @@
 import store, { history } from './store';
-import { fetchUsersData } from './actions/users';
-import { fetchReposData } from './actions/repositories';
-import { setSearchValue, setTabActive } from './actions/app';
+import { fetchUsersData, changeUsersPage } from './actions/users';
+import { fetchReposData, changeReposPage } from './actions/repositories';
+import { setSearchValue, setTabActive, changePerPageAmount } from './actions/app';
 
-export { store, history, fetchUsersData, setSearchValue, setTabActive, fetchReposData };
+export { store, history, fetchUsersData, setSearchValue, setTabActive, fetchReposData, changePerPageAmount, changeUsersPage, changeReposPage };

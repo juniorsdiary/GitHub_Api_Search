@@ -21,3 +21,10 @@ export const fetchReposData = (searchValue, pageInd, perPageNum, sorting, order,
     });
   });
 };
+
+export const changeReposPage = number => {
+  return {
+    type: types.CHANGE_CUR_PAGE,
+    payload: number,
+  };
+};
