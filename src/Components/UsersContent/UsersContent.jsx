@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { fetchUsersData, changeUsersPage } from 'Store';
 import { UserCard, TotalResults, Pagination } from 'Components';
 import { Container } from 'Modules';
+import { ThemeProvider } from 'styled-components';
+import { textColor } from 'Utilities';
 
 const UsersContent = ({ searchValue, activeTab, data, total, curPerPage, curPage, fetchData, changePage, curSortOpts }) => {
   const renderData = data.map(user => <UserCard key={user.id} {...user} />);
@@ -20,9 +22,11 @@ const UsersContent = ({ searchValue, activeTab, data, total, curPerPage, curPage
       {activeTab === 'users' && (
         <>
           <TotalResults total={total} />
-          <Container maxWidth='lg' column>
-            {renderData}
-          </Container>
+          <ThemeProvider theme={textColor}>
+            <Container maxWidth='lg' column>
+              {renderData}
+            </Container>
+          </ThemeProvider>
           <Pagination total={total} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />
         </>
       )}

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const StyledHeader = styled.header`
   width: 100%;
   border: 1px solid transparent;
-  background: ${props => props.background};
+  background: ${props => props.theme.background || props.background};
 `;
 
 const Header = ({ children, background }) => <StyledHeader background={background}>{children}</StyledHeader>;

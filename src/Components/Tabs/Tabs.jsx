@@ -5,16 +5,12 @@ import { Container, TabItem, Text } from 'Modules';
 import { trimNumbers } from 'Utilities';
 import { setTabActive } from 'Store';
 
-// import SelectSearchComponent from './SelectSearchComponent';
-// import UserComponent from './UserComponent';
-// import ReposComponent from './ReposComponent';
-
 const Tabs = ({ curAPI, totalUsers, totalRepos, activeTab, setTabActive }) => {
   return (
     <Container maxWidth={'lg'} row justify='center' align='center'>
       <TabItem active={activeTab === 'users'} onClick={() => setTabActive('users')}>
         <Text size='1.5em'>Users</Text>
-        <span className='total_found_items'>{trimNumbers(totalUsers)}</span>
+        <span>{trimNumbers(totalUsers)}</span>
       </TabItem>
       <TabItem active={activeTab === 'repos'} onClick={() => setTabActive('repos')}>
         <Text size='1.5em'>Repositories</Text>
