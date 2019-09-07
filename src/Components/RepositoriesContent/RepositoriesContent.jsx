@@ -40,7 +40,7 @@ const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
               {renderData}
             </Container>
           </ThemeProvider>
-          <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />
+          {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
         </>
       )}
     </>

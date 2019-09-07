@@ -5,6 +5,7 @@ const initialState = {
   curPerPage: 10,
   activeTab: 'users',
   activeCardTab: 'followers',
+  isFetched: false,
 };
 
 export default function appData(state = initialState, action) {
@@ -13,6 +14,7 @@ export default function appData(state = initialState, action) {
     return {
       ...state,
       curSearchValue: payload,
+      isFetched: true,
     };
   } else if (type === types.SET_TAB_ACTIVE) {
     return {

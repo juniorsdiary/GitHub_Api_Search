@@ -20,7 +20,7 @@ const App = () => {
       <ThemeProvider theme={background}>
         <Header>
           <Text color='white' size='2em' align='center' bold>
-            GitHub Search App
+            Search API
           </Text>
         </Header>
       </ThemeProvider>

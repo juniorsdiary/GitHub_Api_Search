@@ -40,7 +40,7 @@ const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
               {renderData}
             </Container>
           </ThemeProvider>
-          <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />
+          {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
         </>
       )}
     </>

@@ -24,7 +24,7 @@ const Pagination = ({ total, perPage, curPage, changePage }) => {
     </PageButton>
   ));
   return (
-    <Container row justify='center'>
+    <Container padded row justify='center'>
       <PageButton onClick={() => changePage(curPage - 1)} disabled={curPage === 1}>
         Previous
       </PageButton>
