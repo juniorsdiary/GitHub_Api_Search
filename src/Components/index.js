@@ -13,7 +13,6 @@ import SortingOptions from './SortingOptions/SortingOptions.jsx';
 import SearchComponent from './SearchComponent/SearchComponent.jsx';
 import RepositoriesContent from './RepositoriesContent/RepositoriesContent.jsx';
 import ChoosePerPageAmount from './ChoosePerPageAmount/ChoosePerPageAmount.jsx';
-import SortingUnit from './SortingUnit/SortingUnit.jsx';
 // import  from './/.jsx'
 export {
   Tabs,
@@ -24,7 +23,6 @@ export {
   ReposCard,
   Pagination,
   PageButton,
-  SortingUnit,
   TabsContents,
   TotalResults,
   UsersContent,

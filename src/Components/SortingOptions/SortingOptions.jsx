@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SortingUnit } from 'Components';
+import { Container, InputField } from 'Modules';
 
 const SortingOptions = ({ changeSorting, sortingOptions, curSorting }) => {
-  const renderSortOptions = sortingOptions.map((item, index) => <SortingUnit key={index} {...item} changeSorting={changeSorting} />);
+  const renderSortOptions = sortingOptions.map((item, index) => (
+    <option key={index} value={`${item.order} ${item.cmd}`}>
+      {item.sorting}
+    </option>
+  ));
   return (
-    <details>
-      <summary>Sort: {curSorting.sorting}</summary>
-      <details-menu>
-        <div>Sort options</div>
-        <div>{renderSortOptions}</div>
-      </details-menu>
-    </details>
+    <Container row align='center'>
+      <label htmlFor='sort_opt'>Sort: </label>
+      <InputField as='select' name='sort_opt' id='sort_opt' onChange={e => changeSorting(e.target.value)}>
+        {renderSortOptions}
+      </InputField>
+    </Container>
   );
 };
 

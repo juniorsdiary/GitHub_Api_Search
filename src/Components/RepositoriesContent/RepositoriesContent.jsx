@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchReposData, changeReposPage } from 'Store';
+import { fetchReposData } from 'Store';
 import { ReposCard, TotalResults, Pagination, SortingOptions } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
@@ -10,23 +10,23 @@ import { textColor } from 'Utilities';
 const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
   const { apidata, totalCount, curPage, curSorting, sortingOptions } = reposData;
   const { curSearchValue, activeTab, curPerPage } = appData;
-  const { sorting, order, cmd } = curSorting;
 
   const renderData = apidata.map(repo => <ReposCard key={repo.id} {...repo} />);
 
   const fetchAnotherPage = useCallback(
     number => {
-      changePage(number);
-      fetchData(curSearchValue, number, curPerPage, sorting, order, cmd);
+      fetchData(curSearchValue, number, curPerPage, curSorting);
     },
-    [changePage, cmd, curPerPage, curSearchValue, fetchData, order, sorting]
+    [curPerPage, curSearchValue, curSorting, fetchData]
   );
 
   const fetchAnotherSorting = useCallback(
-    options => {
-      fetchData(curSearchValue, curPage, curPerPage, options.sorting, options.order, options.cmd);
+    value => {
+      let selectedSorting = value.split(' ');
+      let option = sortingOptions.filter(opts => opts.order === selectedSorting[0] && opts.cmd === selectedSorting[1])[0];
+      fetchData(curSearchValue, curPage, curPerPage, option);
     },
-    [curPage, curPerPage, curSearchValue, fetchData]
+    [curPage, curPerPage, curSearchValue, fetchData, sortingOptions]
   );
 
   return (
@@ -63,11 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchStateToProps = dispatch => {
   return {
-    fetchData: (searchValue, pageInd, perPageNum, sorting, order, cmd) => {
-      dispatch(fetchReposData(searchValue, pageInd, perPageNum, sorting, order, cmd));
-    },
-    changePage: number => {
-      dispatch(changeReposPage(number));
+    fetchData: (searchValue, pageInd, perPageNum, sorting) => {
+      dispatch(fetchReposData(searchValue, pageInd, perPageNum, sorting));
     },
   };
 };

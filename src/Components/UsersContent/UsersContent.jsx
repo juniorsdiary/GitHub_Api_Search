@@ -1,31 +1,34 @@
 import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchUsersData, changeUsersPage } from 'Store';
+import { fetchUsersData } from 'Store';
 import { UserCard, TotalResults, Pagination, SortingOptions } from 'Components';
 import { Container } from 'Modules';
-import { ThemeProvider } from 'styled-components';
 import { textColor } from 'Utilities';
+import { ThemeProvider } from 'styled-components';
 
 const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
   const { apidata, totalCount, curPage, curSorting, sortingOptions } = usersData;
   const { curSearchValue, activeTab, curPerPage } = appData;
-  const { sorting, order, cmd } = curSorting;
 
   const renderData = apidata.map(user => <UserCard key={user.id} {...user} />);
 
   const fetchAnotherPage = useCallback(
     number => {
-      fetchData(curSearchValue, number, curPerPage, sorting, order, cmd);
+      fetchData(curSearchValue, number, curPerPage, curSorting);
     },
-    [cmd, curPerPage, fetchData, order, curSearchValue, sorting]
+    [fetchData, curSearchValue, curPerPage, curSorting]
   );
+
   const fetchAnotherSorting = useCallback(
-    options => {
-      fetchData(curSearchValue, curPage, curPerPage, options.sorting, options.order, options.cmd);
+    value => {
+      let selectedSorting = value.split(' ');
+      let option = sortingOptions.filter(opts => opts.order === selectedSorting[0] && opts.cmd === selectedSorting[1])[0];
+      fetchData(curSearchValue, curPage, curPerPage, option);
     },
-    [curPage, curPerPage, curSearchValue, fetchData]
+    [curPage, curPerPage, curSearchValue, fetchData, sortingOptions]
   );
+
   return (
     <>
       {activeTab === 'users' && (
@@ -60,11 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchStateToProps = dispatch => {
   return {
-    fetchData: (searchValue, pageInd, perPageNum, sorting, order, cmd) => {
-      dispatch(fetchUsersData(searchValue, pageInd, perPageNum, sorting, order, cmd));
-    },
-    changePage: number => {
-      dispatch(changeUsersPage(number));
+    fetchData: (searchValue, pageInd, perPageNum, sorting) => {
+      dispatch(fetchUsersData(searchValue, pageInd, perPageNum, sorting));
     },
   };
 };

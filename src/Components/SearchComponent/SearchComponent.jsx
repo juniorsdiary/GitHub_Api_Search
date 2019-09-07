@@ -7,12 +7,15 @@ import { FormContainer, InputField, Button } from 'Modules';
 const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue }) => {
   const [searchValue, setValue] = useState('');
 
-  const submitSearch = e => {
-    e.preventDefault();
-    setSearchValue(searchValue);
-    fetchUsers(searchValue, 1, perPageNum, 'Best Match', 'desc', '');
-    fetchRepos(searchValue, 1, perPageNum, 'Best Match', 'desc', '');
-  };
+  const submitSearch = useCallback(
+    e => {
+      e.preventDefault();
+      setSearchValue(searchValue);
+      fetchUsers(searchValue, 1, perPageNum, { sorting: 'Best Match', order: 'desc', cmd: '' });
+      fetchRepos(searchValue, 1, perPageNum, { sorting: 'Best Match', order: 'desc', cmd: '' });
+    },
+    [fetchRepos, fetchUsers, perPageNum, searchValue, setSearchValue]
+  );
 
   const setInputValue = useCallback(e => {
     setValue(e.target.value);
@@ -43,11 +46,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUsers: (searchValue, pageInd, perPageNum, sorting, order, cmd) => {
-      dispatch(fetchUsersData(searchValue, pageInd, perPageNum, sorting, order, cmd));
+    fetchUsers: (searchValue, pageInd, perPageNum, sorting) => {
+      dispatch(fetchUsersData(searchValue, pageInd, perPageNum, sorting));
     },
-    fetchRepos: (searchValue, pageInd, perPageNum, sorting, order, cmd) => {
-      dispatch(fetchReposData(searchValue, pageInd, perPageNum, sorting, order, cmd));
+    fetchRepos: (searchValue, pageInd, perPageNum, sorting) => {
+      dispatch(fetchReposData(searchValue, pageInd, perPageNum, sorting));
     },
     setSearchValue: value => {
       dispatch(setSearchValue(value));
