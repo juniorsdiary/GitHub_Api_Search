@@ -15,37 +15,37 @@ const initialState = {
   },
   sortingOptions: [
     {
-      sortName: 'Best Match',
+      sorting: 'Best Match',
       order: 'desc',
       cmd: '',
     },
     {
-      sortName: 'Most stars',
+      sorting: 'Most stars',
       order: 'desc',
       cmd: 'stars',
     },
     {
-      sortName: 'Fewest stars',
+      sorting: 'Fewest stars',
       order: 'asc',
       cmd: 'stars',
     },
     {
-      sortName: 'Most forks',
+      sorting: 'Most forks',
       order: 'desc',
       cmd: 'forks',
     },
     {
-      sortName: 'Fewest forks',
+      sorting: 'Fewest forks',
       order: 'asc',
       cmd: 'forks',
     },
     {
-      sortName: 'Recently updated',
+      sorting: 'Recently updated',
       order: 'desc',
       cmd: 'updated',
     },
     {
-      sortName: 'Least recently updated',
+      sorting: 'Least recently updated',
       order: 'asc',
       cmd: 'updated',
     },

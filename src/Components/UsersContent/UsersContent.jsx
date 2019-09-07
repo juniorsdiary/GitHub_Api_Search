@@ -2,27 +2,34 @@ import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchUsersData, changeUsersPage, showCardData } from 'Store';
-import { UserCard, TotalResults, Pagination } from 'Components';
+import { UserCard, TotalResults, Pagination, SortingOptions } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
 import { textColor } from 'Utilities';
 
-const UsersContent = ({ appData, usersData, fetchData, changePage, showDetails }) => {
-  const { apidata, totalCount, curPage, curSorting } = usersData;
+const UsersContent = ({ appData, usersData, fetchData, changePage, showDetails, changeSorting }) => {
+  const { apidata, totalCount, curPage, curSorting, sortingOptions } = usersData;
   const { curSearchValue, activeTab, curPerPage } = appData;
-  const renderData = apidata.map(user => <UserCard key={user.id} {...user} showDetails={showDetails} />);
   const { sorting, order, cmd } = curSorting;
+  const renderData = apidata.map(user => <UserCard key={user.id} {...user} showDetails={showDetails} />);
+
   const fetchAnotherPage = useCallback(
     number => {
-      changePage(number);
       fetchData(curSearchValue, number, curPerPage, sorting, order, cmd);
     },
-    [changePage, cmd, curPerPage, fetchData, order, curSearchValue, sorting]
+    [cmd, curPerPage, fetchData, order, curSearchValue, sorting]
+  );
+  const fetchAnotherSorting = useCallback(
+    options => {
+      fetchData(curSearchValue, curPage, curPerPage, options.sorting, options.order, options.cmd);
+    },
+    [curPage, curPerPage, curSearchValue, fetchData]
   );
   return (
     <>
       {activeTab === 'users' && (
         <>
+          <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <TotalResults total={totalCount} />
           <ThemeProvider theme={textColor}>
             <Container maxWidth='lg' column width='100%' justify='center'>
@@ -42,6 +49,7 @@ UsersContent.propTypes = {
   fetchData: PropTypes.func,
   changePage: PropTypes.func,
   showDetails: PropTypes.func,
+  changeSorting: PropTypes.func,
 };
 
 const mapStateToProps = state => {

@@ -1,5 +1,4 @@
 export const API_BASE = 'https://api.github.com';
 export const USERS = 'users';
 export const REPOS = 'repositories';
-export const AUTH = '0bbd4ccb8956ce05e5af701a10f31bd66663f124';
-// https://api.github.com/users/vlad/starred
+export const AUTH = 'e7ae5036a718fbbb3b3b43471e594c7747d72ece';

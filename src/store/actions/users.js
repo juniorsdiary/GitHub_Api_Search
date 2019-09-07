@@ -42,3 +42,10 @@ export const hideUserModal = bool => {
     payload: bool,
   };
 };
+
+export const changeSorting = opts => {
+  return {
+    type: types.CHANGE_USERS_SORTING,
+    payload: opts,
+  };
+};

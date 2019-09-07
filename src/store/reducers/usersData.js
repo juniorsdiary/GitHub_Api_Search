@@ -16,37 +16,37 @@ const initialState = {
   },
   sortingOptions: [
     {
-      sortName: 'Best Match',
+      sorting: 'Best Match',
       order: 'desc',
       cmd: '',
     },
     {
-      sortName: 'Most followers',
+      sorting: 'Most followers',
       order: 'desc',
       cmd: 'followers',
     },
     {
-      sortName: 'Fewest followers',
+      sorting: 'Fewest followers',
       order: 'asc',
       cmd: 'followers',
     },
     {
-      sortName: 'Most recently joined',
+      sorting: 'Most recently joined',
       order: 'desc',
       cmd: 'joined',
     },
     {
-      sortName: 'Least recently joined',
+      sorting: 'Least recently joined',
       order: 'asc',
       cmd: 'joined',
     },
     {
-      sortName: 'Most repositories',
+      sorting: 'Most repositories',
       order: 'desc',
       cmd: 'repositories',
     },
     {
-      sortName: 'Least repositories',
+      sorting: 'Least repositories',
       order: 'asc',
       cmd: 'repositories',
     },
@@ -82,12 +82,6 @@ export default function usersData(state = initialState, action) {
       ...state,
       singleCard: state.apidata.filter(item => item.id === payload)[0],
       activeUserCard: true,
-    };
-  } else if (type === types.HIDE_CARD) {
-    return {
-      ...state,
-      singleCard: {},
-      activeUserCard: false,
     };
   }
   return state;

@@ -1,11 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Text, Container } from 'Modules';
 import { PageButton } from 'Components';
+import { connect } from 'react-redux';
 import { changePerPageAmount } from 'Store';
 
-const Filters = ({ curPerPageNum, changePage }) => {
+const ChoosePerPageAmount = ({ curPerPageNum, changePage }) => {
   const renderPagesOptions = [10, 25, 50, 100].map(item => (
     <PageButton key={item} onClick={() => changePage(item)} active={curPerPageNum === item}>
       {item}
@@ -19,11 +19,10 @@ const Filters = ({ curPerPageNum, changePage }) => {
   );
 };
 
-Filters.propTypes = {
+ChoosePerPageAmount.propTypes = {
   curPerPageNum: PropTypes.number,
   changePage: PropTypes.func,
 };
-
 const mapStateToProps = state => {
   return {
     curPerPageNum: state.appData.curPerPage,
@@ -41,4 +40,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Filters);
+)(ChoosePerPageAmount);
