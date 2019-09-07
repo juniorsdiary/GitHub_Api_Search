@@ -1,11 +1,12 @@
 import * as types from '../types';
-import { constants } from 'Utilities';
 
 const initialState = {
   id: 0,
   title: 'Users',
   active: true,
   apidata: [],
+  singleCard: {},
+  activeUserCard: false,
   totalCount: 0,
   curPage: 1,
   curSorting: {
@@ -75,6 +76,18 @@ export default function usersData(state = initialState, action) {
     return {
       ...state,
       curPage: payload,
+    };
+  } else if (type === types.SHOW_CARD) {
+    return {
+      ...state,
+      singleCard: state.apidata.filter(item => item.id === payload)[0],
+      activeUserCard: true,
+    };
+  } else if (type === types.HIDE_CARD) {
+    return {
+      ...state,
+      singleCard: {},
+      activeUserCard: false,
     };
   }
   return state;

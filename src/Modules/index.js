@@ -7,5 +7,7 @@ import Button from './Button/Button.jsx';
 import TabsContainer from './TabsContainer/TabsContainer.jsx';
 import TabItem from './TabItem/TabItem.jsx';
 import Avatar from './Avatar/Avatar.jsx';
+import Portal from './Portal/Portal.jsx';
+import ModalDialog from './ModalDialog/ModalDialog.jsx';
 
-export { Header, Container, Text, FormContainer, InputField, Button, TabsContainer, TabItem, Avatar };
+export { Header, Container, Text, FormContainer, InputField, Button, TabsContainer, TabItem, Avatar, Portal, ModalDialog };

@@ -7,3 +7,6 @@ export const SYNC_REPOS_OPTIONS = 'SYNC_REPOS_OPTIONS';
 export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
 export const SET_TAB_ACTIVE = 'SET_TAB_ACTIVE';
 export const CHANGE_CUR_PAGE = 'CHANGE_CUR_PAGE';
+export const SHOW_CARD = 'SHOW_CARD';
+export const HIDE_CARD = 'HIDE_CARD';
+export const SET_CARD_TAB = 'SET_CARD_TAB';

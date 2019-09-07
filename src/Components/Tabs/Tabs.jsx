@@ -4,16 +4,21 @@ import PropTypes from 'prop-types';
 import { Container, TabItem, Text } from 'Modules';
 import { trimNumbers } from 'Utilities';
 import { setTabActive } from 'Store';
+import styled from 'styled-components';
+
+const TabText = styled(Text)`
+  padding: 5px 5px 5px 0;
+`;
 
 const Tabs = ({ curAPI, totalUsers, totalRepos, activeTab, setTabActive }) => {
   return (
-    <Container maxWidth={'lg'} row justify='center' align='center'>
-      <TabItem active={activeTab === 'users'} onClick={() => setTabActive('users')}>
-        <Text size='1.5em'>Users</Text>
+    <Container maxWidth={'lg'} row>
+      <TabItem active={activeTab === 'users'} onClick={() => setTabActive('users')} align='center'>
+        <TabText size='1.5em'>Users</TabText>
         <span>{trimNumbers(totalUsers)}</span>
       </TabItem>
-      <TabItem active={activeTab === 'repos'} onClick={() => setTabActive('repos')}>
-        <Text size='1.5em'>Repositories</Text>
+      <TabItem active={activeTab === 'repos'} onClick={() => setTabActive('repos')} align='center'>
+        <TabText size='1.5em'>Repositories</TabText>
         <span>{trimNumbers(totalRepos)}</span>
       </TabItem>
     </Container>
@@ -27,8 +32,6 @@ Tabs.propTypes = {
   activeTab: PropTypes.string,
   setTabActive: PropTypes.func,
 };
-// {/* {/Users/.test(curAPI.title) && curAPI.apidata.total_count > 0 ? <UserComponent /> : null}
-// {/Repos/.test(curAPI.title) && curAPI.apidata.total_count > 0 ? <ReposComponent /> : null} */}
 
 const mapStateToProps = state => {
   return {

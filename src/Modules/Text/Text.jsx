@@ -5,6 +5,8 @@ const Text = styled.p`
   font-weight: ${props => (props.bold ? '600' : 'inherit')};
   font-size: ${props => props.size || '1em'};
   text-align: ${props => props.align};
+  ${props => props.href && { textDecoration: 'none' }}
+  padding: 5px 10px;
 `;
 
 export default Text;

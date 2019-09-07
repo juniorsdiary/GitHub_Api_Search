@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Button } from 'Modules';
 
 const StyledTag = styled(Button)`
+  font-size: 1em;
   color: #0366d6;
   margin: 0;
   padding: 5px 10px;

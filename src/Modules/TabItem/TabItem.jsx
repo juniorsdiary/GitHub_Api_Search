@@ -1,14 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Container from '../Container/Container.jsx';
 
-const StyledTab = styled.div`
+const TabItem = styled(Container)`
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   cursor: pointer;
-  color: #2188ff;
+  color: rgba(0, 0, 0, 0.5);
   ${props =>
     props.active && {
       color: 'rgb(0,0,0)',
@@ -27,9 +23,4 @@ const StyledTab = styled.div`
   }
 `;
 
-const TabItem = ({ children, ...props }) => <StyledTab {...props}>{children}</StyledTab>;
-
-TabItem.propTypes = {
-  children: PropTypes.node,
-};
-export default React.memo(TabItem);
+export default TabItem;

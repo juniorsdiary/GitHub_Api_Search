@@ -1,34 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Container, Avatar, Text } from 'Modules';
+import { Link } from 'react-router-dom';
+import { Container, Avatar, Text, Button } from 'Modules';
 
 const CardWrapper = styled(Container)`
-  padding: 1em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
-const EnhancedText = styled(Text)`
-  :hover {
-    color: rgb(0, 0, 0);
-  }
+const Description = styled(Container)`
+  flex: 1 1;
 `;
 
-const UserCard = ({ avatar_url, login }) => (
-  <CardWrapper maxWidth='sm' align='center' row>
+const UserCard = ({ id, avatar_url, login, showDetails }) => (
+  <CardWrapper align='center' width='100%'>
     <Avatar src={avatar_url} alt='avatar_logo' size='xs' />
-    <Container justify='space-between' row>
-      <EnhancedText size='1.5em'>{login}</EnhancedText>
-      <EnhancedText size='1em' color='rgba(0,0,0, 0.5)'>
-        Show more details
-      </EnhancedText>
-    </Container>
+    <Description justify='space-between' align='center'>
+      <Text size='1.75em' color='black' bold>
+        {login}
+      </Text>
+      <Button as={Link} to={`/user/${id}`} size='1em'>
+        Details
+      </Button>
+    </Description>
   </CardWrapper>
 );
 
 UserCard.propTypes = {
+  id: PropTypes.number,
   avatar_url: PropTypes.string,
   login: PropTypes.string,
+  showDetails: PropTypes.func,
 };
 
 export default UserCard;

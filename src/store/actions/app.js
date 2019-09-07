@@ -15,3 +15,10 @@ export const setTabActive = value => {
     payload: value,
   };
 };
+
+export const setCardTab = name => {
+  return {
+    type: types.SET_CARD_TAB,
+    payload: name,
+  };
+};

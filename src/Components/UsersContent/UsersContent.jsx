@@ -1,33 +1,35 @@
 import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchUsersData, changeUsersPage } from 'Store';
+import { fetchUsersData, changeUsersPage, showCardData } from 'Store';
 import { UserCard, TotalResults, Pagination } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
 import { textColor } from 'Utilities';
 
-const UsersContent = ({ searchValue, activeTab, data, total, curPerPage, curPage, fetchData, changePage, curSortOpts }) => {
-  const renderData = data.map(user => <UserCard key={user.id} {...user} />);
-  const { sorting, order, cmd } = curSortOpts;
+const UsersContent = ({ appData, usersData, fetchData, changePage, showDetails }) => {
+  const { apidata, totalCount, curPage, curSorting } = usersData;
+  const { curSearchValue, activeTab, curPerPage } = appData;
+  const renderData = apidata.map(user => <UserCard key={user.id} {...user} showDetails={showDetails} />);
+  const { sorting, order, cmd } = curSorting;
   const fetchAnotherPage = useCallback(
     number => {
       changePage(number);
-      fetchData(searchValue, number, curPerPage, sorting, order, cmd);
+      fetchData(curSearchValue, number, curPerPage, sorting, order, cmd);
     },
-    [changePage, cmd, curPerPage, fetchData, order, searchValue, sorting]
+    [changePage, cmd, curPerPage, fetchData, order, curSearchValue, sorting]
   );
   return (
     <>
       {activeTab === 'users' && (
         <>
-          <TotalResults total={total} />
+          <TotalResults total={totalCount} />
           <ThemeProvider theme={textColor}>
-            <Container maxWidth='lg' column>
+            <Container maxWidth='lg' column width='100%' justify='center'>
               {renderData}
             </Container>
           </ThemeProvider>
-          <Pagination total={total} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />
+          <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />
         </>
       )}
     </>
@@ -35,26 +37,17 @@ const UsersContent = ({ searchValue, activeTab, data, total, curPerPage, curPage
 };
 
 UsersContent.propTypes = {
-  searchValue: PropTypes.string,
-  activeTab: PropTypes.string,
-  data: PropTypes.array,
-  total: PropTypes.number,
-  curPerPage: PropTypes.number,
-  curPage: PropTypes.number,
+  usersData: PropTypes.object,
+  appData: PropTypes.object,
   fetchData: PropTypes.func,
   changePage: PropTypes.func,
-  curSortOpts: PropTypes.object,
+  showDetails: PropTypes.func,
 };
 
 const mapStateToProps = state => {
   return {
-    data: state.usersData.apidata,
-    total: state.usersData.totalCount,
-    searchValue: state.appData.curSearchValue,
-    activeTab: state.appData.activeTab,
-    curPerPage: state.appData.curPerPage,
-    curPage: state.usersData.curPage,
-    curSortOpts: state.usersData.curSorting,
+    usersData: state.usersData,
+    appData: state.appData,
   };
 };
 
@@ -65,6 +58,9 @@ const mapDispatchStateToProps = dispatch => {
     },
     changePage: number => {
       dispatch(changeUsersPage(number));
+    },
+    showDetails: id => {
+      dispatch(showCardData(id));
     },
   };
 };

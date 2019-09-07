@@ -10,8 +10,12 @@ import Pagination from './Pagination/Pagination.jsx';
 import PageButton from './PageButton/PageButton.jsx';
 import PageText from './PageText/PageText.jsx';
 import ReposCard from './ReposCard/ReposCard.jsx';
+import MainPage from './MainPage/MainPage.jsx';
+import UserPage from './UserPage/UserPage.jsx';
 // import  from './/.jsx'
 export {
+  MainPage,
+  UserPage,
   SearchComponent,
   Tabs,
   TabsContents,

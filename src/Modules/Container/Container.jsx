@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 
 const StyledContainer = styled.div`
   display: flex;
-  flex-direction: ${props => (props.column ? 'column' : 'row')};
-  width: 100%;
+  padding: 0.5em;
+  flex-direction: ${({ dir }) => dir};
   max-width: ${props => `${props.maxWidth}px`};
-  margin: 0 auto;
-  ${props => {
-    if (props.row) {
+  ${props => props.width && `width: ${props.width}`}
+  ${({ dir, justify, align }) => {
+    if (dir === 'row') {
       return {
-        justifyContent: props.justify || 'flex-start',
-        alignItems: props.align || 'flex-start',
+        justifyContent: justify || 'flex-start',
+        alignItems: align || 'flex-start',
       };
-    } else if (props.column) {
+    } else if (dir === 'column') {
       return {
-        justifyContent: props.align || 'flex-start',
-        alignItems: props.justify || 'flex-start',
+        justifyContent: align || 'flex-start',
+        alignItems: justify || 'flex-start',
       };
     }
   }}
@@ -25,10 +25,11 @@ const StyledContainer = styled.div`
 
 const sizes = [{ size: 'xs', value: 560 }, { size: 'sm', value: 780 }, { size: 'md', value: 980 }, { size: 'lg', value: 1100 }];
 
-const Container = ({ children, maxWidth = 'xs', row = true, ...props }) => {
+const Container = ({ children, maxWidth = 'xs', row, column, ...props }) => {
   const value = sizes.find(size => size.size === maxWidth).value;
+  const dir = row ? 'row' : column ? 'column' : 'row';
   return (
-    <StyledContainer maxWidth={value} row={row} {...props}>
+    <StyledContainer maxWidth={value} dir={dir} {...props}>
       {children}
     </StyledContainer>
   );
@@ -37,5 +38,6 @@ Container.propTypes = {
   children: PropTypes.node,
   maxWidth: PropTypes.string,
   row: PropTypes.bool,
+  column: PropTypes.bool,
 };
 export default Container;

@@ -4,6 +4,7 @@ const initialState = {
   curSearchValue: '',
   curPerPage: 10,
   activeTab: 'users',
+  activeCardTab: 'followers',
 };
 
 export default function appData(state = initialState, action) {
@@ -22,6 +23,11 @@ export default function appData(state = initialState, action) {
     return {
       ...state,
       curPerPage: payload,
+    };
+  } else if (type === types.SET_CARD_TAB) {
+    return {
+      ...state,
+      activeCardTab: payload,
     };
   }
   return state;

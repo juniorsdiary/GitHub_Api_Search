@@ -5,3 +5,7 @@ export const textColor = {
 export const background = {
   background: '#24292e',
 };
+
+export const fullWidth = {
+  width: '100%',
+};
