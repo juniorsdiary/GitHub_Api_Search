@@ -10,14 +10,24 @@ const TabItem = styled(Container)`
       color: 'rgb(0,0,0)',
       fontWeight: '600',
     }}
+  :hover {
+    ::after {
+      content: '';
+      ${props =>
+        !props.active && {
+          background: 'rgba(0, 0, 0, 0.2)',
+        }}
+    }
+  }
   ::after {
     content: '';
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     ${props =>
       props.active && {
-        width: '100%',
-        height: '2px',
-        position: 'absolute',
-        bottom: '0',
         background: 'rgb(255, 0, 0)',
       }}
   }

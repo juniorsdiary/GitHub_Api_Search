@@ -4,8 +4,10 @@ import { Text, Container } from 'Modules';
 import { devideNumber } from 'Utilities';
 
 const TotalResults = ({ total }) => (
-  <Container row justify='center'>
-    <Text size='1.5rem'>Total Results:</Text>
+  <Container row justify='center' align='center'>
+    <Text padded size='1.5rem' bold>
+      Total Results:
+    </Text>
     <Text size='1.5rem'>{devideNumber(total)}</Text>
   </Container>
 );

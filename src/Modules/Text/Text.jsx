@@ -6,7 +6,7 @@ const Text = styled.p`
   font-size: ${props => props.size || '1em'};
   text-align: ${props => props.align};
   ${props => props.href && { textDecoration: 'none' }}
-  padding: 5px 10px;
+  ${props => props.padded && { padding: '0.5em' }}
 `;
 
 export default Text;

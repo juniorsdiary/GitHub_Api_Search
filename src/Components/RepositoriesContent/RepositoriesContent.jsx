@@ -2,32 +2,45 @@ import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchReposData, changeReposPage } from 'Store';
-import { ReposCard, TotalResults, Pagination } from 'Components';
+import { ReposCard, TotalResults, Pagination, SortingOptions } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
 import { textColor } from 'Utilities';
 
-const RepositoriesContent = ({ searchValue, activeTab, data, total, curPerPage, curPage, fetchData, changePage, curSortOpts }) => {
-  const renderData = data.map(repo => <ReposCard key={repo.id} {...repo} />);
-  const { sorting, order, cmd } = curSortOpts;
+const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
+  const { apidata, totalCount, curPage, curSorting, sortingOptions } = reposData;
+  const { curSearchValue, activeTab, curPerPage } = appData;
+  const { sorting, order, cmd } = curSorting;
+
+  const renderData = apidata.map(repo => <ReposCard key={repo.id} {...repo} />);
+
   const fetchAnotherPage = useCallback(
     number => {
       changePage(number);
-      fetchData(searchValue, number, curPerPage, sorting, order, cmd);
+      fetchData(curSearchValue, number, curPerPage, sorting, order, cmd);
     },
-    [changePage, cmd, curPerPage, fetchData, order, searchValue, sorting]
+    [changePage, cmd, curPerPage, curSearchValue, fetchData, order, sorting]
   );
+
+  const fetchAnotherSorting = useCallback(
+    options => {
+      fetchData(curSearchValue, curPage, curPerPage, options.sorting, options.order, options.cmd);
+    },
+    [curPage, curPerPage, curSearchValue, fetchData]
+  );
+
   return (
     <>
       {activeTab === 'repos' && (
         <>
-          <TotalResults total={total} />
+          <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
+          <TotalResults total={totalCount} />
           <ThemeProvider theme={textColor}>
             <Container maxWidth='lg' column>
               {renderData}
             </Container>
           </ThemeProvider>
-          <Pagination total={total} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />
+          <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />
         </>
       )}
     </>
@@ -35,26 +48,16 @@ const RepositoriesContent = ({ searchValue, activeTab, data, total, curPerPage, 
 };
 
 RepositoriesContent.propTypes = {
-  searchValue: PropTypes.string,
-  activeTab: PropTypes.string,
-  data: PropTypes.array,
-  total: PropTypes.number,
-  curPerPage: PropTypes.number,
-  curPage: PropTypes.number,
+  reposData: PropTypes.object,
+  appData: PropTypes.object,
   fetchData: PropTypes.func,
   changePage: PropTypes.func,
-  curSortOpts: PropTypes.object,
 };
 
 const mapStateToProps = state => {
   return {
-    data: state.reposData.apidata,
-    total: state.reposData.totalCount,
-    searchValue: state.appData.curSearchValue,
-    activeTab: state.appData.activeTab,
-    curPerPage: state.appData.curPerPage,
-    curPage: state.reposData.curPage,
-    curSortOpts: state.reposData.curSorting,
+    reposData: state.reposData,
+    appData: state.appData,
   };
 };
 

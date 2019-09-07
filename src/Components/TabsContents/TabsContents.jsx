@@ -4,7 +4,7 @@ import { UsersContent, RepositoriesContent } from 'Components';
 
 const TabsContent = () => {
   return (
-    <Container maxWidth='lg' column justify='center' width='100%'>
+    <Container padded maxWidth='lg' column justify='center' width='100%'>
       <UsersContent />
       <RepositoriesContent />
     </Container>

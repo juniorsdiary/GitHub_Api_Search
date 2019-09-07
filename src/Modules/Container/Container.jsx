@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const StyledContainer = styled.div`
   display: flex;
-  padding: 0.5em;
+  ${props => props.padded && { padding: '0.5em' }}
   flex-direction: ${({ dir }) => dir};
   max-width: ${props => `${props.maxWidth}px`};
   ${props => props.width && `width: ${props.width}`}

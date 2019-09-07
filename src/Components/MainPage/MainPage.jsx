@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchComponent, Tabs, TabsContents, Filters, ChoosePerPageAmount } from 'Components';
+import { SearchComponent, Tabs, TabsContents, ChoosePerPageAmount } from 'Components';
 import { Container } from 'Modules';
 const MainPage = () => (
   <>

@@ -9,5 +9,6 @@ import TabItem from './TabItem/TabItem.jsx';
 import Avatar from './Avatar/Avatar.jsx';
 import Portal from './Portal/Portal.jsx';
 import ModalDialog from './ModalDialog/ModalDialog.jsx';
+import BreadCrumps from './BreadCrumps/BreadCrumps.jsx';
 
-export { Header, Container, Text, FormContainer, InputField, Button, TabsContainer, TabItem, Avatar, Portal, ModalDialog };
+export { Header, Container, Text, FormContainer, InputField, Button, TabsContainer, TabItem, Avatar, Portal, ModalDialog, BreadCrumps };

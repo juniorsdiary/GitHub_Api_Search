@@ -14,8 +14,8 @@ const DetailsContainer = styled(Container)`
 `;
 const ReposCard = ({ full_name, stargazers_count, language, description, updated_at, license }) => {
   return (
-    <RepoContainer width='100%' align='center'>
-      <Container width='100%' justify='space-between' align='center'>
+    <RepoContainer padded maxWidth='sm' width='100%' align='center'>
+      <Container maxWidth='sm' width='100%' justify='space-between' align='center'>
         <Text size='1.5rem' bold color='#0366d6'>
           {full_name}
         </Text>
@@ -23,8 +23,10 @@ const ReposCard = ({ full_name, stargazers_count, language, description, updated
           Show more details
         </Text>
       </Container>
-      <Container width='100%'>{description && <Text size='1.2rem'>{description}</Text>}</Container>
-      <DetailsContainer width='100%' align='center' justify='space-between'>
+      <Container maxWidth='sm' width='100%'>
+        {description && <Text size='1.2rem'>{description}</Text>}
+      </Container>
+      <DetailsContainer maxWidth='sm' width='100%' align='center' justify='space-between'>
         {license && <Text size='1.2rem'>{license.name}</Text>}
         <Text size='1rem'>{convertLastUpadate(updated_at)}</Text>
         <Text size='1.2rem'>{language}</Text>

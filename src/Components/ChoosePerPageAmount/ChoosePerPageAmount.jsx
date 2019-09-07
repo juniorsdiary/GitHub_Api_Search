@@ -12,8 +12,10 @@ const ChoosePerPageAmount = ({ curPerPageNum, changePage }) => {
     </PageButton>
   ));
   return (
-    <Container row justify='center' align='center'>
-      <Text size='1.5rem'>Data per page:</Text>
+    <Container padded row justify='center' align='center'>
+      <Text size='1.5rem' padded bold>
+        Data per page:
+      </Text>
       {renderPagesOptions}
     </Container>
   );

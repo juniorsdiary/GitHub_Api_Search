@@ -1,17 +1,18 @@
 import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchUsersData, changeUsersPage, showCardData } from 'Store';
+import { fetchUsersData, changeUsersPage } from 'Store';
 import { UserCard, TotalResults, Pagination, SortingOptions } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
 import { textColor } from 'Utilities';
 
-const UsersContent = ({ appData, usersData, fetchData, changePage, showDetails, changeSorting }) => {
+const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
   const { apidata, totalCount, curPage, curSorting, sortingOptions } = usersData;
   const { curSearchValue, activeTab, curPerPage } = appData;
   const { sorting, order, cmd } = curSorting;
-  const renderData = apidata.map(user => <UserCard key={user.id} {...user} showDetails={showDetails} />);
+
+  const renderData = apidata.map(user => <UserCard key={user.id} {...user} />);
 
   const fetchAnotherPage = useCallback(
     number => {
@@ -48,8 +49,6 @@ UsersContent.propTypes = {
   appData: PropTypes.object,
   fetchData: PropTypes.func,
   changePage: PropTypes.func,
-  showDetails: PropTypes.func,
-  changeSorting: PropTypes.func,
 };
 
 const mapStateToProps = state => {
@@ -66,9 +65,6 @@ const mapDispatchStateToProps = dispatch => {
     },
     changePage: number => {
       dispatch(changeUsersPage(number));
-    },
-    showDetails: id => {
-      dispatch(showCardData(id));
     },
   };
 };
