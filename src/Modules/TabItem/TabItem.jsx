@@ -6,6 +6,7 @@ const StyledTab = styled(Container)`
   position: relative;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.5);
+  transition: all 0.5s linear;
   ${props =>
     props.active && {
       color: 'rgb(0,0,0)',

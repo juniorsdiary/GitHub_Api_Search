@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchUsersData } from 'Store';
 import { UserCard, TotalResults, Pagination, SortingOptions } from 'Components';
 import { Container } from 'Modules';
-import { textColor } from 'Utilities';
+import { themes } from 'Utilities';
 import { ThemeProvider } from 'styled-components';
 
 const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
@@ -35,7 +35,7 @@ const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
         <>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <TotalResults total={totalCount} />
-          <ThemeProvider theme={textColor}>
+          <ThemeProvider theme={themes.textColor}>
             <Container maxWidth='lg' column width='100%' justify='center'>
               {renderData}
             </Container>

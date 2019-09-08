@@ -15,5 +15,4 @@ ReactDOM.render(
   document.getElementById('container')
 );
 
-// TODO: add padding for user page
 // TODO:  create repos page

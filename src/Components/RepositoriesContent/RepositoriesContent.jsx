@@ -5,7 +5,7 @@ import { fetchReposData } from 'Store';
 import { ReposCard, TotalResults, Pagination, SortingOptions } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
-import { textColor } from 'Utilities';
+import { themes } from 'Utilities';
 
 const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
   const { apidata, totalCount, curPage, curSorting, sortingOptions } = reposData;
@@ -35,7 +35,7 @@ const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
         <>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <TotalResults total={totalCount} />
-          <ThemeProvider theme={textColor}>
+          <ThemeProvider theme={themes.textColor}>
             <Container maxWidth='lg' column>
               {renderData}
             </Container>

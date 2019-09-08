@@ -4,7 +4,7 @@ import { MainPage, UserPage } from 'Components';
 import { Header, Text } from 'Modules';
 import { hot } from 'react-hot-loader/root';
 import { ThemeProvider } from 'styled-components';
-import { background } from 'Utilities';
+import { themes } from 'Utilities';
 import axios from 'axios';
 const App = () => {
   // useEffect(() => {
@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <>
-      <ThemeProvider theme={background}>
+      <ThemeProvider theme={themes.background}>
         <Header>
           <Text color='white' size='2em' align='center' bold>
             Search API

@@ -26,7 +26,7 @@ const UserPage = ({ data, setActiveTab, activeTab }) => {
       <Container width='100%' justify='space-between'>
         <Avatar src={avatar_url} alt='avatar_logo' size='lg' />
         <Button>
-          <Text as='a' href={data.html_url} target='blank' size='1em'>
+          <Text padded as='a' href={data.html_url} target='blank' size='1em'>
             See at GitHub
           </Text>
           <GoMarkGithub size='25' />
