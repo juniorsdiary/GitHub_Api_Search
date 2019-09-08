@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { MainPage, UserPage } from 'Components';
+import { MainPage, UserPage, ReposPage } from 'Components';
 import { Header, Text } from 'Modules';
 import { hot } from 'react-hot-loader/root';
 import { ThemeProvider } from 'styled-components';
@@ -27,6 +27,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route path='/user/:id' component={UserPage} />
+        <Route path='/repository/:id' component={ReposPage} />
       </Switch>
     </>
   );

@@ -12,19 +12,21 @@ const Description = styled(Container)`
   flex: 1 1;
 `;
 
-const UserCard = ({ id, avatar_url, login }) => (
-  <CardWrapper padded maxWidth='sm' align='center' width='100%'>
-    <Avatar src={avatar_url} alt='avatar_logo' size='xs' />
-    <Description maxWidth='sm' justify='space-between' align='center'>
-      <Text padded size='1.75em' color='black' bold>
-        {login}
-      </Text>
-      <Button as={Link} to={`/user/${id}`} size='1em'>
-        Details
-      </Button>
-    </Description>
-  </CardWrapper>
-);
+const UserCard = ({ id, avatar_url, login }) => {
+  return (
+    <CardWrapper padded maxWidth='sm' align='center' width='100%'>
+      <Avatar src={avatar_url} alt='avatar_logo' size='xs' />
+      <Description maxWidth='sm' justify='space-between' align='center'>
+        <Text padded size='1.75em' color='black' bold>
+          {login}
+        </Text>
+        <Button as={Link} to={`/user/${id}`} size='1em'>
+          Details
+        </Button>
+      </Description>
+    </CardWrapper>
+  );
+};
 
 UserCard.propTypes = {
   id: PropTypes.number,

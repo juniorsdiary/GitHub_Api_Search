@@ -5,7 +5,4 @@ export default {
   background: {
     background: '#24292e',
   },
-  fullWidth: {
-    width: '100%',
-  },
 };
