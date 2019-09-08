@@ -14,6 +14,11 @@ const StyledButton = styled.button`
   align-items: center;
   cursor: pointer;
   ${props => props.to && { textDecoration: 'none' }}
+  :hover {
+    background-color: #e6ebf1;
+    background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+    border-color: rgba(27, 31, 35, 0.35);
+  }
 `;
 
 export default StyledButton;

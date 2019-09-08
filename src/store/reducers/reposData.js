@@ -1,5 +1,4 @@
 import * as types from '../types';
-import { constants } from 'Utilities';
 
 const initialState = {
   id: 1,

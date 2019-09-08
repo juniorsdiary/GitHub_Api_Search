@@ -13,6 +13,12 @@ const StyledInput = styled.input.attrs(props => ({
   border-radius: 5px;
   font-size: ${props => props.size || '1em'};
   padding: 5px;
+  transition: all 0.2s linear;
+  :focus {
+    border-color: #2188ff;
+    box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075), 0 0 0 0.2em rgba(3, 102, 214, 0.3);
+    outline: none;
+  }
 `;
 
 const InputField = ({ onChange, ...props }) => {

@@ -15,7 +15,5 @@ ReactDOM.render(
   document.getElementById('container')
 );
 
-// TODO: add styled for input focus
-// TODO: add styles for changins tabs
 // TODO: add padding for user page
 // TODO:  create repos page

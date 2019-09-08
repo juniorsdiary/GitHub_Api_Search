@@ -1,7 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 import Container from '../Container/Container.jsx';
 
-const TabItem = styled(Container)`
+const StyledTab = styled(Container)`
   position: relative;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.5);
@@ -13,24 +14,22 @@ const TabItem = styled(Container)`
   :hover {
     ::after {
       content: '';
-      ${props =>
-        !props.active && {
-          background: 'rgba(0, 0, 0, 0.2)',
-        }}
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      bottom: 0;
+      left: 0;
     }
   }
-  ::after {
-    content: '';
-    width: 100%;
-    height: 3px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    ${props =>
-      props.active && {
-        background: 'rgb(255, 0, 0)',
-      }}
-  }
 `;
-
-export default TabItem;
+/* eslint-disable react/prop-types */
+const TabItem = ({ children, ...rest }, ref) => {
+  return (
+    <StyledTab {...rest} ref={ref}>
+      {children}
+    </StyledTab>
+  );
+};
+/* eslint-enable react/prop-types */
+export default React.forwardRef(TabItem);

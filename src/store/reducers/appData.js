@@ -3,8 +3,8 @@ import * as types from '../types';
 const initialState = {
   curSearchValue: '',
   curPerPage: 10,
-  activeTab: 'users',
-  activeCardTab: 'followers',
+  activeTab: 0,
+  activeCardTab: 0,
   isFetched: false,
 };
 

@@ -31,7 +31,7 @@ const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
 
   return (
     <>
-      {activeTab === 'repos' && (
+      {activeTab === 1 && (
         <>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <TotalResults total={totalCount} />

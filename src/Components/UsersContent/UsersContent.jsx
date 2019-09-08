@@ -31,7 +31,7 @@ const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
 
   return (
     <>
-      {activeTab === 'users' && (
+      {activeTab === 0 && (
         <>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <TotalResults total={totalCount} />

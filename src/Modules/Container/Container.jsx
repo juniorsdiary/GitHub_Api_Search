@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledContainer = styled.div`
+  position: relative;
   display: flex;
   ${props => props.padded && { padding: '0.5em' }}
   flex-direction: ${({ dir }) => dir};
@@ -24,20 +25,17 @@ const StyledContainer = styled.div`
 `;
 
 const sizes = [{ size: 'xs', value: 560 }, { size: 'sm', value: 780 }, { size: 'md', value: 980 }, { size: 'lg', value: 1100 }];
-
-const Container = ({ children, maxWidth = 'xs', row, column, ...props }) => {
+/* eslint-disable react/prop-types */
+const Container = (props, ref) => {
+  const { children, maxWidth = 'xs', row, column, ...rest } = props;
   const value = sizes.find(size => size.size === maxWidth).value;
   const dir = row ? 'row' : column ? 'column' : 'row';
   return (
-    <StyledContainer maxWidth={value} dir={dir} {...props}>
+    <StyledContainer maxWidth={value} dir={dir} {...rest} ref={ref}>
       {children}
     </StyledContainer>
   );
 };
-Container.propTypes = {
-  children: PropTypes.node,
-  maxWidth: PropTypes.string,
-  row: PropTypes.bool,
-  column: PropTypes.bool,
-};
-export default Container;
+/* eslint-enable react/prop-types */
+
+export default React.forwardRef(Container);
