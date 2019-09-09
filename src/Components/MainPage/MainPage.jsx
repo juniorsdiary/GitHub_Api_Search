@@ -4,6 +4,7 @@ import { SearchComponent, Tabs, ChoosePerPageAmount } from 'Components';
 import { UsersContent, RepositoriesContent } from 'Components';
 import { Container } from 'Modules';
 import { GoLogoGithub } from 'react-icons/go';
+
 const MainPage = () => {
   const isFetched = useSelector(state => state.appData.isFetched);
   return (
@@ -11,7 +12,7 @@ const MainPage = () => {
       <SearchComponent />
       {!isFetched && <GoLogoGithub size='50' />}
       {isFetched && (
-        <Container maxWidth='lg' column justify='center' width='100%'>
+        <Container padding='0 10px' maxWidth='lg' column justify='center' width='100%'>
           <Tabs />
           <ChoosePerPageAmount />
           <UsersContent />

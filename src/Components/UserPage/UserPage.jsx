@@ -28,25 +28,25 @@ const UserPage = ({ data, setActiveTab, activeTab, fetchData, match }) => {
   const { width, position } = useTabSwitch(activeTab, [followersRef, followingRef, reposTabRef, starsRef]);
 
   return (
-    <Container maxWidth='lg' width='100%' column>
+    <Container padding='0 10px' maxWidth='lg' width='100%' column>
       <UserDescription data={rest} />
       <Button>
-        <Text as='a' href={html_url} target='blank' size='1em'>
+        <Text padding='0 10px 0 0' as='a' href={html_url} target='blank' size='1em'>
           See at GitHub
         </Text>
         <GoMarkGithub size='15' />
       </Button>
       <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
-        <TabItem active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
+        <TabItem padding='10px' active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
           <Text size='1.5em'>Followers</Text>
         </TabItem>
-        <TabItem active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={followingRef}>
+        <TabItem padding='10px' active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={followingRef}>
           <Text size='1.5em'>Following</Text>
         </TabItem>
-        <TabItem active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={reposTabRef}>
+        <TabItem padding='10px' active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={reposTabRef}>
           <Text size='1.5em'>Repositories</Text>
         </TabItem>
-        <TabItem active={activeTab === 3} onClick={() => setActiveTab(3)} align='center' ref={starsRef}>
+        <TabItem padding='10px' active={activeTab === 3} onClick={() => setActiveTab(3)} align='center' ref={starsRef}>
           <Text size='1.5em'>Stars</Text>
         </TabItem>
       </TabsContainer>

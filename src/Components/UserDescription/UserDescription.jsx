@@ -7,39 +7,53 @@ import { convertLastUpadate } from 'Utilities';
 const UserDescription = ({ data }) => {
   const { avatar_url, name, login, bio, company, blog, email, location, created_at } = data;
   return (
-    <Container width='100%' maxWidth='sm'>
+    <Container padding='10px 0' width='100%' maxWidth='sm'>
       <Avatar src={avatar_url} alt='avatar_logo' size='lg' />
-      <Container column>
+      <Container padding='0 10px' column>
         <Text size='1.5em' bold>
           {name}
         </Text>
         <Text size='1.5em'>{login}</Text>
-        {bio && <Text>{bio}</Text>}
+        {bio && (
+          <Text padding='5px 0' size='1.2rem'>
+            {bio}
+          </Text>
+        )}
         {company && (
-          <Container>
+          <Container padding='5px 0' align='center'>
             <GoOrganization size='15' />
-            <Text bold>{company}</Text>
+            <Text bold padding='0 5px' size='1.2rem'>
+              {company}
+            </Text>
           </Container>
         )}
         {blog && (
-          <Container align='center'>
+          <Container padding='5px 0' align='center'>
             <GoLink size='15' />
-            <Text>{blog}</Text>
+            <Text padding='0 5px' size='1.2rem'>
+              {blog}
+            </Text>
           </Container>
         )}
         {email && (
-          <Container>
+          <Container padding='5px 0' align='center'>
             <GoMail size='15' />
-            <Text>{email}</Text>
+            <Text padding='0 5px' size='1.2rem'>
+              {email}
+            </Text>
           </Container>
         )}
         {location && (
-          <Container>
+          <Container padding='5px 0' align='center'>
             <GoLocation size='15' />
-            <Text>{location}</Text>
+            <Text padding='0 5px' size='1.2rem'>
+              {location}
+            </Text>
           </Container>
         )}
-        <Text>{convertLastUpadate(created_at)}</Text>
+        <Text padding='0 5px' size='1.2rem'>
+          {convertLastUpadate(created_at)}
+        </Text>
       </Container>
     </Container>
   );

@@ -13,10 +13,14 @@ const Tabs = ({ curAPI, totalUsers, totalRepos, activeTab, setTabActive }) => {
   return (
     <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
       <TabItem active={activeTab === 0} onClick={() => setTabActive(0)} align='flex-end' ref={usersTabRef}>
-        <Text size='1.5em'>Users</Text>
+        <Text padding='5px' size='1.5em'>
+          Users
+        </Text>
       </TabItem>
       <TabItem active={activeTab === 1} onClick={() => setTabActive(1)} align='flex-end' ref={reposTabRef}>
-        <Text size='1.5em'>Repositories</Text>
+        <Text padding='5px' size='1.5em'>
+          Repositories
+        </Text>
       </TabItem>
     </TabsContainer>
   );

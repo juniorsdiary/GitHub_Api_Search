@@ -16,7 +16,7 @@ const DetailsContainer = styled(Container)`
 
 const ReposCard = ({ id, full_name, stargazers_count, language, description, updated_at, license }) => {
   return (
-    <RepoContainer maxWidth='sm' width='100%' align='center'>
+    <RepoContainer padding='10px' maxWidth='sm' width='100%' align='center'>
       <Container maxWidth='sm' width='100%' justify='space-between' align='center'>
         <Text size='1.5rem' bold color='#0366d6'>
           {full_name}

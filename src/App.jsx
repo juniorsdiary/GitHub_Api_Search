@@ -23,7 +23,7 @@ const App = () => {
     <>
       <ThemeProvider theme={themes.background}>
         <Header>
-          <Text color='white' size='2em' align='center' bold>
+          <Text padding='10px 0' color='white' size='2rem' align='center' bold>
             Search API
           </Text>
         </Header>

@@ -12,9 +12,10 @@ const opacity = keyframes`
 const StyledContainer = styled.div`
   position: relative;
   display: flex;
-  ${props => props.padded && { padding: '1em' }}
+  ${props => props.padding && { padding: props.padding }};
+  ${props => props.margin && { margin: props.margin }};
   max-width: ${props => `${props.maxWidth}px`};
-  ${props => props.width && `width: ${props.width}`}
+  ${props => props.width && `width: ${props.width}`};
   ${({ row, column, justify, align }) => {
     const dir = row ? 'row' : column ? 'column' : 'row';
     if (dir === 'row') {
@@ -30,7 +31,7 @@ const StyledContainer = styled.div`
         alignItems: justify || 'flex-start',
       };
     }
-  }}
+  }};
   animation: ${opacity} 0.5s linear;
 `;
 
