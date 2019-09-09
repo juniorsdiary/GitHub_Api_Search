@@ -12,7 +12,7 @@ const Description = styled(Container)`
   flex: 1 1;
 `;
 
-const UserCard = ({ id, avatar_url, login }) => {
+const UserCard = ({ avatar_url, login }) => {
   return (
     <CardWrapper padded maxWidth='sm' align='center' width='100%'>
       <Avatar src={avatar_url} alt='avatar_logo' size='xs' />
@@ -20,7 +20,7 @@ const UserCard = ({ id, avatar_url, login }) => {
         <Text padded size='1.75em' color='black' bold>
           {login}
         </Text>
-        <Button as={Link} to={`/user/${id}`} size='1em'>
+        <Button as={Link} to={`/user/${login}`} size='1em'>
           Details
         </Button>
       </Description>
@@ -29,7 +29,6 @@ const UserCard = ({ id, avatar_url, login }) => {
 };
 
 UserCard.propTypes = {
-  id: PropTypes.number,
   avatar_url: PropTypes.string,
   login: PropTypes.string,
 };

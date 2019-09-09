@@ -11,3 +11,4 @@ export const SHOW_CARD = 'SHOW_CARD';
 export const HIDE_CARD = 'HIDE_CARD';
 export const SET_CARD_TAB = 'SET_CARD_TAB';
 export const CHANGE_USERS_SORTING = 'CHANGE_USERS_SORTING';
+export const FETCH_USER = 'FETCH_USER';

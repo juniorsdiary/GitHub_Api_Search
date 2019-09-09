@@ -5,10 +5,12 @@ import { devideNumber } from 'Utilities';
 
 const TotalResults = ({ total }) => (
   <Container row justify='center' align='center'>
-    <Text padded size='1.5rem' bold>
+    <Text padded size='1.5rem' bold color='black'>
       Total Results:
     </Text>
-    <Text size='1.5rem'>{devideNumber(total)}</Text>
+    <Text size='1.5rem' color='black'>
+      {devideNumber(total)}
+    </Text>
   </Container>
 );
 

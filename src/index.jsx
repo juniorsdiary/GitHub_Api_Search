@@ -15,4 +15,11 @@ ReactDOM.render(
   document.getElementById('container')
 );
 
-// TODO:  create repos page
+// TODO: fix tabs after style
+// TODO: make padding settings more convinient
+// TODO: исправить конвертацию времени
+// TODO: parser of bio emojies
+// TODO: fix button link area
+
+// TODO: add some data to the repos Repos page
+// TODO: make layout for ReposPage

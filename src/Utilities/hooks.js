@@ -6,7 +6,10 @@ export const useFetch = (type, name, subject) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const url = `${API_BASE}/${type}/${name}/${subject}`;
-    const fetchData = async () => await axios({ method: 'get', url, headers: { Authorization: `token ${AUTH}` } }).then(data => setData(data.data));
+    const fetchData = async () =>
+      await axios({ method: 'get', url, headers: { Authorization: `token ${AUTH}` } }).then(data => {
+        setData(data.data);
+      });
     if (name) {
       fetchData();
     }

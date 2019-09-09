@@ -5,16 +5,7 @@ import { Header, Text } from 'Modules';
 import { hot } from 'react-hot-loader/root';
 import { ThemeProvider } from 'styled-components';
 import { themes } from 'Utilities';
-import axios from 'axios';
 const App = () => {
-  // useEffect(() => {
-  //   fetchUrl();
-  // }, []);
-  // const fetchUrl = async () => {
-  //   let data = await axios({ method: 'get', url: 'https://api.github.com', headers: { Authorization: '0bbd4ccb8956ce05e5af701a10f31bd66663f124' } });
-  //   console.log(data.data);
-  // };
-
   return (
     <>
       <ThemeProvider theme={themes.background}>
@@ -26,7 +17,7 @@ const App = () => {
       </ThemeProvider>
       <Switch>
         <Route exact path='/' component={MainPage} />
-        <Route path='/user/:id' component={UserPage} />
+        <Route path='/user/:login' component={UserPage} />
         <Route path='/repository/:id' component={ReposPage} />
       </Switch>
     </>

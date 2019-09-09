@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchReposData } from 'Store';
-import { ReposCard, TotalResults, Pagination, SortingOptions } from 'Components';
+import { ReposCard, TotalResults, Pagination, SortingOptions, TabContent } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
 import { themes } from 'Utilities';
@@ -10,8 +10,6 @@ import { themes } from 'Utilities';
 const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
   const { apidata, totalCount, curPage, curSorting, sortingOptions } = reposData;
   const { curSearchValue, activeTab, curPerPage } = appData;
-
-  const renderData = apidata.map(repo => <ReposCard key={repo.id} {...repo} />);
 
   const fetchAnotherPage = useCallback(
     number => {
@@ -32,16 +30,13 @@ const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
   return (
     <>
       {activeTab === 1 && (
-        <>
+        <Container padded maxWidth='lg' column justify='center' width='100%'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
-          <TotalResults total={totalCount} />
           <ThemeProvider theme={themes.textColor}>
-            <Container maxWidth='lg' column>
-              {renderData}
-            </Container>
+            <TabContent data={apidata} active={true} MapComponent={ReposCard} total={totalCount} />
           </ThemeProvider>
           {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
-        </>
+        </Container>
       )}
     </>
   );

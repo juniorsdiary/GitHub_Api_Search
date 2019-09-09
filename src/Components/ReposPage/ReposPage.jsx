@@ -6,7 +6,7 @@ import { Container, Text, Button } from 'Modules';
 import { UserCard } from 'Components';
 import { convertLastUpadate } from 'Utilities';
 import { GoEye, GoRepoForked, GoStar, GoMarkGithub } from 'react-icons/go';
-// TODO: исправить конвертацию времени
+
 const ReposPage = ({ data, setActiveTab, activeTab }) => {
   const { name, language, updated_at, watchers, stargazers_count, forks, owner, description, html_url, license, created_at } = data;
   return (

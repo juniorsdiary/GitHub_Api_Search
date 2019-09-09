@@ -23,24 +23,20 @@ export const fetchUsersData = (searchValue, pageInd, perPageNum, sortingOptions)
   });
 };
 
+export const fetchUser = login => dispatch => {
+  const url = `${constants.API_BASE}/users/${login}`;
+  axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(data => {
+    dispatch({
+      type: types.FETCH_USER,
+      payload: data.data,
+    });
+  });
+};
+
 export const changeUsersPage = number => {
   return {
     type: types.CHANGE_CUR_PAGE,
     payload: number,
-  };
-};
-
-export const showCardData = id => {
-  return {
-    type: types.SHOW_CARD,
-    payload: id,
-  };
-};
-
-export const hideUserModal = bool => {
-  return {
-    type: types.HIDE_CARD,
-    payload: bool,
   };
 };
 

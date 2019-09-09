@@ -1,37 +1,34 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { GoMarkGithub } from 'react-icons/go';
-import { TabsContainer, Container, Avatar, TabItem, Text, Button } from 'Modules';
+import { TabsContainer, Container, TabItem, Text } from 'Modules';
 import { useFetch, useTabSwitch } from 'Utilities';
-import { UserCard, ReposCard } from 'Components';
-import { setCardTab } from 'Store';
+import { UserCard, ReposCard, UserDescription, TabContent } from 'Components';
+import { setCardTab, fetchUser } from 'Store';
 
-const UserPage = ({ data, setActiveTab, activeTab }) => {
-  const { avatar_url, login } = data;
-  const followers = useFetch('users', login, 'followers');
-  const repositories = useFetch('users', login, 'repos');
-  const stars = useFetch('users', login, 'starred');
-  const following = useFetch('users', login, 'following');
+const UserPage = ({ data, setActiveTab, activeTab, fetchData, match }) => {
+  const login = match.params.login;
+
+  useEffect(() => {
+    fetchData(login);
+  }, [fetchData, login]);
+
+  const { followers, following, public_repos, ...rest } = data;
+
+  const followers_data = useFetch('users', login, 'followers');
+  const following_data = useFetch('users', login, 'following');
+  const repositories_data = useFetch('users', login, 'repos');
+  const stars_data = useFetch('users', login, 'starred');
 
   const starsRef = useRef();
   const reposTabRef = useRef();
   const followersRef = useRef();
   const followingRef = useRef();
-
   const { width, position } = useTabSwitch(activeTab, [followersRef, followingRef, reposTabRef, starsRef]);
 
   return (
     <Container padded maxWidth='lg' width='100%' column>
-      <Container width='100%' justify='space-between'>
-        <Avatar src={avatar_url} alt='avatar_logo' size='lg' />
-        <Button>
-          <Text padded as='a' href={data.html_url} target='blank' size='1em'>
-            See at GitHub
-          </Text>
-          <GoMarkGithub size='25' />
-        </Button>
-      </Container>
+      <UserDescription data={rest} />
       <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
         <TabItem padded active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
           <Text size='1.5em'>Followers</Text>
@@ -46,34 +43,10 @@ const UserPage = ({ data, setActiveTab, activeTab }) => {
           <Text size='1.5em'>Stars</Text>
         </TabItem>
       </TabsContainer>
-      {activeTab === 0 && (
-        <Container column width='100%'>
-          {followers.map(follower => (
-            <UserCard key={follower.id} {...follower} />
-          ))}
-        </Container>
-      )}
-      {activeTab === 1 && (
-        <Container column width='100%'>
-          {following.map(follower => (
-            <UserCard key={follower.id} {...follower} />
-          ))}
-        </Container>
-      )}
-      {activeTab === 2 && (
-        <Container column width='100%'>
-          {repositories.map(repo => (
-            <ReposCard key={repo.id} {...repo} />
-          ))}
-        </Container>
-      )}
-      {activeTab === 3 && (
-        <Container column width='100%'>
-          {stars.map(starredRepo => (
-            <ReposCard key={starredRepo.id} {...starredRepo} />
-          ))}
-        </Container>
-      )}
+      <TabContent data={followers_data} active={activeTab === 0} MapComponent={UserCard} total={followers} />
+      <TabContent data={following_data} active={activeTab === 1} MapComponent={UserCard} total={following} />
+      <TabContent data={repositories_data} active={activeTab === 2} MapComponent={ReposCard} total={public_repos} />
+      <TabContent data={stars_data} active={activeTab === 3} MapComponent={ReposCard} />
     </Container>
   );
 };
@@ -82,12 +55,13 @@ UserPage.propTypes = {
   activeTab: PropTypes.number,
   data: PropTypes.object,
   setActiveTab: PropTypes.func,
+  fetchData: PropTypes.func,
+  match: PropTypes.object,
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.match.params.id;
   return {
-    data: state.usersData.apidata.filter(user => user.id === +id)[0],
+    data: state.usersData.singleUser,
     activeTab: state.appData.activeCardTab,
   };
 };
@@ -96,6 +70,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setActiveTab: name => {
       dispatch(setCardTab(name));
+    },
+    fetchData: login => {
+      dispatch(fetchUser(login));
     },
   };
 };

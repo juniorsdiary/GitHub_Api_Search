@@ -5,7 +5,7 @@ const initialState = {
   title: 'Users',
   active: true,
   apidata: [],
-  singleCard: {},
+  singleUser: {},
   activeUserCard: false,
   totalCount: 0,
   curPage: 1,
@@ -77,11 +77,10 @@ export default function usersData(state = initialState, action) {
       ...state,
       curPage: payload,
     };
-  } else if (type === types.SHOW_CARD) {
+  } else if (type === types.FETCH_USER) {
     return {
       ...state,
-      singleCard: state.apidata.filter(item => item.id === payload)[0],
-      activeUserCard: true,
+      singleUser: payload,
     };
   }
   return state;

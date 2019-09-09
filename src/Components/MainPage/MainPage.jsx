@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { SearchComponent, Tabs, TabsContents, ChoosePerPageAmount } from 'Components';
+import { SearchComponent, Tabs, ChoosePerPageAmount } from 'Components';
+import { UsersContent, RepositoriesContent } from 'Components';
 import { Container } from 'Modules';
 import { GoLogoGithub } from 'react-icons/go';
 const MainPage = () => {
@@ -13,7 +14,8 @@ const MainPage = () => {
         <Container maxWidth='lg' column justify='center' width='100%'>
           <Tabs />
           <ChoosePerPageAmount />
-          <TabsContents />
+          <UsersContent />
+          <RepositoriesContent />
         </Container>
       )}
     </>
