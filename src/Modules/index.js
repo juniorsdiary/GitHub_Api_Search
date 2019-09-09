@@ -10,5 +10,6 @@ import Avatar from './Avatar/Avatar.jsx';
 import Portal from './Portal/Portal.jsx';
 import ModalDialog from './ModalDialog/ModalDialog.jsx';
 import BreadCrumps from './BreadCrumps/BreadCrumps.jsx';
+import PageButton from './PageButton/PageButton.jsx';
 
-export { Header, Container, Text, FormContainer, InputField, Button, TabsContainer, TabItem, Avatar, Portal, ModalDialog, BreadCrumps };
+export { PageButton, Header, Container, Text, FormContainer, InputField, Button, TabsContainer, TabItem, Avatar, Portal, ModalDialog, BreadCrumps };

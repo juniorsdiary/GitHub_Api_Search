@@ -10,7 +10,6 @@ const StyledTab = styled(Container)`
   ${props =>
     props.active && {
       color: 'rgb(0,0,0)',
-      fontWeight: '600',
     }}
   :hover {
     ::after {

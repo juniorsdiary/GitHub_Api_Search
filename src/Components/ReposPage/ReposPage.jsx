@@ -10,7 +10,7 @@ import { GoEye, GoRepoForked, GoStar, GoMarkGithub } from 'react-icons/go';
 const ReposPage = ({ data, setActiveTab, activeTab }) => {
   const { name, language, updated_at, watchers, stargazers_count, forks, owner, description, html_url, license, created_at } = data;
   return (
-    <Container padded maxWidth='lg' width='100%' column>
+    <Container maxWidth='lg' width='100%' column>
       <Container maxWidth='lg' width='100%' align='center' justify='space-between'>
         <Text size='2rem' bold color='#0366d6'>
           {name}

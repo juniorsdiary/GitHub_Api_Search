@@ -15,7 +15,6 @@ ReactDOM.render(
   document.getElementById('container')
 );
 
-// TODO: fix tabs after style
 // TODO: make padding settings more convinient
 // TODO: исправить конвертацию времени
 // TODO: parser of bio emojies

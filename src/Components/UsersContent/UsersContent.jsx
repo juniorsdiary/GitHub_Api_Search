@@ -30,7 +30,7 @@ const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
   return (
     <>
       {activeTab === 0 && (
-        <Container padded maxWidth='lg' column justify='center' width='100%'>
+        <Container maxWidth='lg' column justify='center' width='100%'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <ThemeProvider theme={themes.textColor}>
             <TabContent data={apidata} active={true} MapComponent={UserCard} total={totalCount} />

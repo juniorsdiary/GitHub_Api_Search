@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { definePageIndexes } from 'Utilities';
-import { PageButton } from 'Components';
-import { Container } from 'Modules';
+import { Container, PageButton } from 'Modules';
 
 const Pagination = ({ total, perPage, curPage, changePage }) => {
   let pages = total / perPage > 100 ? 100 : Math.ceil(total / perPage);
@@ -24,7 +23,7 @@ const Pagination = ({ total, perPage, curPage, changePage }) => {
     </PageButton>
   ));
   return (
-    <Container padded row justify='center'>
+    <Container row justify='center'>
       <PageButton onClick={() => changePage(curPage - 1)} disabled={curPage === 1}>
         Previous
       </PageButton>

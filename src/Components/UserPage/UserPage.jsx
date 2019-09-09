@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TabsContainer, Container, TabItem, Text } from 'Modules';
+import { GoMarkGithub } from 'react-icons/go';
+import { TabsContainer, Container, TabItem, Text, Button } from 'Modules';
 import { useFetch, useTabSwitch } from 'Utilities';
 import { UserCard, ReposCard, UserDescription, TabContent } from 'Components';
 import { setCardTab, fetchUser } from 'Store';
@@ -13,7 +14,7 @@ const UserPage = ({ data, setActiveTab, activeTab, fetchData, match }) => {
     fetchData(login);
   }, [fetchData, login]);
 
-  const { followers, following, public_repos, ...rest } = data;
+  const { html_url, followers, following, public_repos, ...rest } = data;
 
   const followers_data = useFetch('users', login, 'followers');
   const following_data = useFetch('users', login, 'following');
@@ -27,19 +28,25 @@ const UserPage = ({ data, setActiveTab, activeTab, fetchData, match }) => {
   const { width, position } = useTabSwitch(activeTab, [followersRef, followingRef, reposTabRef, starsRef]);
 
   return (
-    <Container padded maxWidth='lg' width='100%' column>
+    <Container maxWidth='lg' width='100%' column>
       <UserDescription data={rest} />
+      <Button>
+        <Text as='a' href={html_url} target='blank' size='1em'>
+          See at GitHub
+        </Text>
+        <GoMarkGithub size='15' />
+      </Button>
       <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
-        <TabItem padded active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
+        <TabItem active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
           <Text size='1.5em'>Followers</Text>
         </TabItem>
-        <TabItem padded active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={followingRef}>
+        <TabItem active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={followingRef}>
           <Text size='1.5em'>Following</Text>
         </TabItem>
-        <TabItem padded active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={reposTabRef}>
+        <TabItem active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={reposTabRef}>
           <Text size='1.5em'>Repositories</Text>
         </TabItem>
-        <TabItem padded active={activeTab === 3} onClick={() => setActiveTab(3)} align='center' ref={starsRef}>
+        <TabItem active={activeTab === 3} onClick={() => setActiveTab(3)} align='center' ref={starsRef}>
           <Text size='1.5em'>Stars</Text>
         </TabItem>
       </TabsContainer>

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, Container } from 'Modules';
-import { PageButton } from 'Components';
+import { Text, Container, PageButton } from 'Modules';
 import { connect } from 'react-redux';
 import { changePerPageAmount } from 'Store';
 
@@ -12,8 +11,8 @@ const ChoosePerPageAmount = ({ curPerPageNum, changePage }) => {
     </PageButton>
   ));
   return (
-    <Container padded row justify='center' align='center'>
-      <Text size='1.5rem' padded bold>
+    <Container row justify='center' align='center'>
+      <Text size='1.5rem' bold>
         Data per page:
       </Text>
       {renderPagesOptions}

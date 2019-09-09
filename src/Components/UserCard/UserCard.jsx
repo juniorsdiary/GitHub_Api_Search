@@ -14,10 +14,10 @@ const Description = styled(Container)`
 
 const UserCard = ({ avatar_url, login }) => {
   return (
-    <CardWrapper padded maxWidth='sm' align='center' width='100%'>
+    <CardWrapper maxWidth='sm' align='center' width='100%'>
       <Avatar src={avatar_url} alt='avatar_logo' size='xs' />
       <Description maxWidth='sm' justify='space-between' align='center'>
-        <Text padded size='1.75em' color='black' bold>
+        <Text size='1.75em' color='black' bold>
           {login}
         </Text>
         <Button as={Link} to={`/user/${login}`} size='1em'>

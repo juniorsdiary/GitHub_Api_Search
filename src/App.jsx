@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MainPage, UserPage, ReposPage } from 'Components';
 import { Header, Text } from 'Modules';
 import { hot } from 'react-hot-loader/root';
 import { ThemeProvider } from 'styled-components';
-import { themes } from 'Utilities';
+import { themes, constants } from 'Utilities';
+// import axios from 'axios';
 const App = () => {
+  // useEffect(() => {
+  //   const fetchUrl = async () => {
+  //     let data = await axios({
+  //       method: 'get',
+  //       url: 'https://api.github.com',
+  //       headers: { Authorization: `token ${constants.AUTH}` },
+  //     });
+  //     console.log(data);
+  //   };
+  //   fetchUrl();
+  // }, []);
+
   return (
     <>
       <ThemeProvider theme={themes.background}>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { AUTH, API_BASE } from './constants';
 
@@ -23,27 +23,29 @@ export const useTabSwitch = (activeTab, refs) => {
   let curWidth = useRef(0);
   let activeTabHash = useRef(0);
   let check = refs.every(item => item.current);
-  let curElem,
-    value = 0;
-  if (check) {
-    curElem = refs[activeTab].current;
-    refs.forEach((item, index) => (index < activeTab ? (value += item.current.getBoundingClientRect().width) : (value += 0)));
-  }
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (check) {
-      prevWidth.current = value.toFixed(2);
-      curWidth.current = curElem.getBoundingClientRect().width;
-    }
-    if (check && !activeTab) {
-      let rect = curElem.getBoundingClientRect();
-      curWidth.current = rect.width;
-      prevWidth.current = 0;
+      let fullWidth = refs.map(item => item.current.getBoundingClientRect().width).reduce((a, b) => a + b);
+      if (activeTab) {
+        let value = refs
+          .filter((item, index) => index < activeTab)
+          .map(item => item.current.getBoundingClientRect().width)
+          .reduce((a, b) => a + b);
+
+        prevWidth.current = `${(value / fullWidth) * 100}%`;
+        curWidth.current = `${(refs[activeTab].current.getBoundingClientRect().width / fullWidth) * 100}%`;
+      } else {
+        let rect = refs[activeTab].current.getBoundingClientRect();
+        curWidth.current = `${(rect.width / fullWidth) * 100}%`;
+        prevWidth.current = '0%';
+      }
     }
 
     setValue(state => ({ position: prevWidth.current, width: curWidth.current }));
     activeTabHash.current = activeTab;
-  }, [activeTab, check, curElem, value]);
+    /* eslint-disable */
+  }, [activeTab, check]);
+  /* eslint-enable */
 
   return values;
 };
