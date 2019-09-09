@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setCardTab } from 'Store';
 import { Container, Text, Button } from 'Modules';
 import { UserCard } from 'Components';
-import { convertLastUpadate } from 'Utilities';
+import { convertTime } from 'Utilities';
 import { GoEye, GoRepoForked, GoStar, GoMarkGithub } from 'react-icons/go';
 
 const ReposPage = ({ data, setActiveTab, activeTab }) => {
@@ -27,8 +27,8 @@ const ReposPage = ({ data, setActiveTab, activeTab }) => {
       </Container>
       <Container maxWidth='sm' width='100%' align='center' justify='space-between'>
         {license && <Text size='1.2rem'>{license.name}</Text>}
-        <Text size='1rem'>{convertLastUpadate(updated_at)}</Text>
-        <Text size='1rem'>{convertLastUpadate(created_at)}</Text>
+        <Text size='1rem'>{`Updated ${convertTime(updated_at)}`}</Text>
+        <Text size='1rem'>{`Created ${convertTime(created_at)}`}</Text>
         <Text size='1.2rem'>{language}</Text>
       </Container>
       <Text size='1.5em' bold>

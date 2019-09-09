@@ -33,7 +33,7 @@ const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
         <Container maxWidth='lg' column justify='center' width='100%'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <ThemeProvider theme={themes.textColor}>
-            <TabContent data={apidata} active={true} MapComponent={UserCard} total={totalCount} />
+            <TabContent data={apidata} MapComponent={UserCard} total={totalCount} />
           </ThemeProvider>
           {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
         </Container>

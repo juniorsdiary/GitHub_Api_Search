@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GoLink, GoMail, GoLocation, GoOrganization } from 'react-icons/go';
-import { Container, Avatar, Text } from 'Modules';
-import { convertLastUpadate } from 'Utilities';
+import { Container, Avatar, Text, CustomLink } from 'Modules';
+import { convertTime } from 'Utilities';
 
 const UserDescription = ({ data }) => {
   const { avatar_url, name, login, bio, company, blog, email, location, created_at } = data;
+  const blog_link = /http:\/\//.test(blog) ? blog : `http://${blog}`;
   return (
     <Container padding='10px 0' width='100%' maxWidth='sm'>
       <Avatar src={avatar_url} alt='avatar_logo' size='lg' />
@@ -30,7 +31,7 @@ const UserDescription = ({ data }) => {
         {blog && (
           <Container padding='5px 0' align='center'>
             <GoLink size='15' />
-            <Text padding='0 5px' size='1.2rem'>
+            <Text as='a' href={blog_link} target='blank' padding='0 5px' size='1.2rem' color='#0366d6'>
               {blog}
             </Text>
           </Container>
@@ -38,7 +39,7 @@ const UserDescription = ({ data }) => {
         {email && (
           <Container padding='5px 0' align='center'>
             <GoMail size='15' />
-            <Text padding='0 5px' size='1.2rem'>
+            <Text as='a' href={`mailto:${blog}`} padding='0 5px' size='1.2rem' color='#0366d6'>
               {email}
             </Text>
           </Container>
@@ -51,8 +52,8 @@ const UserDescription = ({ data }) => {
             </Text>
           </Container>
         )}
-        <Text padding='0 5px' size='1.2rem'>
-          {convertLastUpadate(created_at)}
+        <Text padding='5px' size='1.2rem'>
+          {`Account created ${convertTime(created_at)}`}
         </Text>
       </Container>
     </Container>

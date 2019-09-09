@@ -33,7 +33,7 @@ const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
         <Container maxWidth='lg' column justify='center' width='100%'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <ThemeProvider theme={themes.textColor}>
-            <TabContent data={apidata} active={true} MapComponent={ReposCard} total={totalCount} />
+            <TabContent data={apidata} MapComponent={ReposCard} total={totalCount} />
           </ThemeProvider>
           {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
         </Container>

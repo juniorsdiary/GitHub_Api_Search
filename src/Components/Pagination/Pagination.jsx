@@ -23,19 +23,23 @@ const Pagination = ({ total, perPage, curPage, changePage }) => {
     </PageButton>
   ));
   return (
-    <Container row justify='center'>
-      <PageButton onClick={() => changePage(curPage - 1)} disabled={curPage === 1}>
-        Previous
-      </PageButton>
-      {rederFirstPages}
-      {curPage >= 7 && <PageButton disabled>...</PageButton>}
-      {renderMiddlePages}
-      {curPage <= pages - 6 && pages > 8 && <PageButton disabled>...</PageButton>}
-      {pages > 4 ? rederLastPages : null}
-      <PageButton onClick={() => changePage(curPage + 1)} disabled={curPage === pages - 1}>
-        Next
-      </PageButton>
-    </Container>
+    <>
+      {pages > 2 && (
+        <Container row justify='center'>
+          <PageButton onClick={() => changePage(curPage - 1)} disabled={curPage === 1}>
+            Previous
+          </PageButton>
+          {rederFirstPages}
+          {curPage >= 7 && <PageButton disabled>...</PageButton>}
+          {renderMiddlePages}
+          {curPage <= pages - 6 && pages > 8 && <PageButton disabled>...</PageButton>}
+          {pages > 4 ? rederLastPages : null}
+          <PageButton onClick={() => changePage(curPage + 1)} disabled={curPage === pages - 1}>
+            Next
+          </PageButton>
+        </Container>
+      )}
+    </>
   );
 };
 

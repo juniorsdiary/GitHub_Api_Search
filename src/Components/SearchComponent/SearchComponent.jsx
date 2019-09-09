@@ -4,18 +4,21 @@ import PropTypes from 'prop-types';
 import { fetchUsersData, setSearchValue, fetchReposData } from 'Store';
 import { FormContainer, InputField, Button } from 'Modules';
 
-const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue }) => {
+const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue, usersSorting, reposSorting }) => {
   const [searchValue, setValue] = useState('');
+
+  /* eslint-disable */
 
   const submitSearch = useCallback(
     e => {
       e.preventDefault();
       setSearchValue(searchValue);
-      fetchUsers(searchValue, 1, perPageNum, { sorting: 'Best Match', order: 'desc', cmd: '' });
-      fetchRepos(searchValue, 1, perPageNum, { sorting: 'Best Match', order: 'desc', cmd: '' });
+      fetchUsers(searchValue, 1, perPageNum, usersSorting);
+      fetchRepos(searchValue, 1, perPageNum, reposSorting);
     },
     [fetchRepos, fetchUsers, perPageNum, searchValue, setSearchValue]
   );
+  /* eslint-enable */
 
   const setInputValue = useCallback(e => {
     setValue(e.target.value);
@@ -36,11 +39,15 @@ SearchComponent.propTypes = {
   fetchRepos: PropTypes.func,
   perPageNum: PropTypes.number,
   setSearchValue: PropTypes.func,
+  usersSorting: PropTypes.object,
+  reposSorting: PropTypes.object,
 };
 
 const mapStateToProps = state => {
   return {
     perPageNum: state.appData.curPerPage,
+    usersSorting: state.usersData.curSorting,
+    reposSorting: state.reposData.curSorting,
   };
 };
 

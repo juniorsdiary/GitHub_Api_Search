@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Text, Button } from 'Modules';
 import styled from 'styled-components';
-import { convertLastUpadate } from 'Utilities';
+import { convertTime } from 'Utilities';
 import { GoStar } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ const ReposCard = ({ id, full_name, stargazers_count, language, description, upd
       </Container>
       <DetailsContainer maxWidth='sm' width='100%' align='center' justify='space-between'>
         {license && <Text size='1.2rem'>{license.name}</Text>}
-        <Text size='1rem'>{convertLastUpadate(updated_at)}</Text>
+        <Text size='1rem'>{`Updated ${convertTime(updated_at)}`}</Text>
         <Text size='1.2rem'>{language}</Text>
         <Container row align='center'>
           <GoStar size='17' />
