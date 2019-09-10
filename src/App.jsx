@@ -1,33 +1,40 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { MainPage, UserPage, ReposPage } from 'Components';
-import { Header, Text } from 'Modules';
+import { Header, Text, Container } from 'Modules';
 import { hot } from 'react-hot-loader/root';
-import { ThemeProvider } from 'styled-components';
-import { themes, constants } from 'Utilities';
-// import axios from 'axios';
-const App = () => {
-  // useEffect(() => {
-  //   const fetchUrl = async () => {
-  //     let data = await axios({
-  //       method: 'get',
-  //       url: 'https://api.github.com',
-  //       headers: { Authorization: `token ${constants.AUTH}` },
-  //     });
-  //     console.log(data);
-  //   };
-  //   fetchUrl();
-  // }, []);
+import { createGlobalStyle } from 'styled-components';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
+const Global = createGlobalStyle`
+  #container {
+    ${props =>
+      props.mode === 'light'
+        ? {
+            background: '#fff',
+            color: 'black',
+          }
+        : {
+            background: '#24292e',
+            color: '#fff',
+          }};
+    height: 100vh;
+  }
+`;
+const App = ({ mode, switchMode }) => {
   return (
     <>
-      <ThemeProvider theme={themes.background}>
-        <Header>
-          <Text padding='10px 0' color='white' size='2rem' bold>
+      <Global mode={mode === 'light' ? 'dark' : 'light'} />
+      <Header>
+        <Container align='center'>
+          <Text padding='10px 0' size='2rem' bold>
             Search API
           </Text>
-        </Header>
-      </ThemeProvider>
+          {mode === 'light' ? <FaMoon size='20' onClick={() => switchMode('dark')} /> : <FaSun size='20' onClick={() => switchMode('light')} />}
+        </Container>
+      </Header>
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route path='/user/:login' component={UserPage} />
@@ -36,5 +43,18 @@ const App = () => {
     </>
   );
 };
+App.propTypes = {
+  mode: PropTypes.string,
+  switchMode: PropTypes.func,
+};
 
-export default hot(App);
+export default connect(
+  state => ({
+    mode: state.appData.mode,
+  }),
+  dispatch => ({
+    switchMode: value => {
+      dispatch({ type: 'MODE', payload: value });
+    },
+  })
+)(hot(App));

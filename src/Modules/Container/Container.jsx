@@ -12,6 +12,8 @@ const opacity = keyframes`
 const StyledContainer = styled.div`
   position: relative;
   display: flex;
+  color: ${props => props.theme.color || 'inherit'};
+  background: ${props => props.theme.background || 'inherit'};
   ${props => props.padding && { padding: props.padding }};
   ${props => props.margin && { margin: props.margin }};
   max-width: ${props => `${props.maxWidth}px`};

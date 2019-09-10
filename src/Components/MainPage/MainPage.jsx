@@ -12,7 +12,7 @@ const MainPage = () => {
       <SearchComponent />
       {!isFetched && <GoLogoGithub size='50' />}
       {isFetched && (
-        <Container padding='0 10px' maxWidth='lg' column justify='center' width='100%'>
+        <Container padding='0 0.7rem' maxWidth='lg' column justify='center' width='100%'>
           <Tabs />
           <ChoosePerPageAmount />
           <UsersContent />

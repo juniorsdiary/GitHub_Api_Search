@@ -8,14 +8,8 @@ const ReposPage = ({ data, setActiveTab, activeTab, fetchData, match, isFetching
   const { owner_name, repo } = match.params;
   const fetch_name = `${owner_name}/${repo}`;
   useEffect(() => {
-    // console.log('ReposPage mounted', fetch_name);
     fetchData(fetch_name);
-    return () => {
-      // console.log('ReposPage unmounted', fetch_name);
-    };
   }, [fetchData, fetch_name]);
-
-  // console.log(!isFetching);
 
   return <>{!isFetching && <RepoPageContent fetch_name={fetch_name} data={data} activeTab={activeTab} setActiveTab={setActiveTab} />}</>;
 };

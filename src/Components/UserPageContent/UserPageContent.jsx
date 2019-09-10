@@ -16,35 +16,35 @@ const UserPageContent = ({ data, activeTab, setActiveTab }) => {
   const { width, position } = useTabSwitch(activeTab, [followersRef, followingRef, reposTabRef, starsRef]);
 
   return (
-    <Container padding='0 10px' maxWidth='lg' width='100%' column>
+    <Container padding='0 1rem' maxWidth='lg' width='100%' column>
       <UserDescription data={rest} />
       <Button as='a' href={html_url} target='blank'>
-        <Text padding='0 10px 0 0' size='1.2rem'>
+        <Text padding='0 0.7rem 0 0' size='1.2rem'>
           See at GitHub
         </Text>
         <GoMarkGithub size='15' />
       </Button>
       <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
-        <TabItem padding='10px' active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
-          <Text padding='0 10px 0 0' size='1rem'>
+        <TabItem padding='0.7rem' active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
+          <Text padding='0 0.7rem 0 0' size='1rem'>
             Followers
           </Text>
           <GoPerson size='15' />
         </TabItem>
-        <TabItem padding='10px' active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={followingRef}>
-          <Text padding='0 10px 0 0' size='1rem'>
+        <TabItem padding='0.7rem' active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={followingRef}>
+          <Text padding='0 0.7rem 0 0' size='1rem'>
             Following
           </Text>
           <GoPerson size='15' />
         </TabItem>
-        <TabItem padding='10px' active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={reposTabRef}>
-          <Text padding='0 10px 0 0' size='1rem'>
+        <TabItem padding='0.7rem' active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={reposTabRef}>
+          <Text padding='0 0.7rem 0 0' size='1rem'>
             Repositories
           </Text>
           <GoRepo size='15' />
         </TabItem>
-        <TabItem padding='10px' active={activeTab === 3} onClick={() => setActiveTab(3)} align='center' ref={starsRef}>
-          <Text padding='0 10px 0 0' size='1rem'>
+        <TabItem padding='0.7rem' active={activeTab === 3} onClick={() => setActiveTab(3)} align='center' ref={starsRef}>
+          <Text padding='0 0.7rem 0 0' size='1rem'>
             Stars
           </Text>
           <GoStar size='15' />

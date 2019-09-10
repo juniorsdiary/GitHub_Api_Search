@@ -14,3 +14,4 @@ export const CHANGE_USERS_SORTING = 'CHANGE_USERS_SORTING';
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_REPO = 'FETCH_REPO';
 export const DATA_FETCHING = 'DATA_FETCHING';
+export const MODE = 'MODE';

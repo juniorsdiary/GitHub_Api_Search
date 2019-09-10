@@ -8,13 +8,8 @@ const UserPage = ({ data, setActiveTab, activeTab, fetchData, match, isFetching 
   const login = match.params.login;
 
   useEffect(() => {
-    // console.log('UserPage mounted', login);
     fetchData(login);
-    return () => {
-      // console.log('UserPage unmounted', login);
-    };
   }, [fetchData, login]);
-  // console.log(!isFetching);
   return <>{!isFetching && <UserPageContent data={data} activeTab={activeTab} setActiveTab={setActiveTab} />}</>;
 };
 

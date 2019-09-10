@@ -6,6 +6,7 @@ const initialState = {
   activeTab: 0,
   activeCardTab: 0,
   isFetched: false,
+  mode: 'light',
 };
 
 export default function appData(state = initialState, action) {
@@ -30,6 +31,11 @@ export default function appData(state = initialState, action) {
     return {
       ...state,
       activeCardTab: payload,
+    };
+  } else if (type === types.MODE) {
+    return {
+      ...state,
+      mode: payload,
     };
   }
   return state;

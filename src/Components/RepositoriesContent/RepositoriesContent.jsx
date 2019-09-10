@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { fetchReposData } from 'Store';
 import { ReposCard, Pagination, SortingOptions, TotalResults } from 'Components';
 import { Container } from 'Modules';
-import { ThemeProvider } from 'styled-components';
-import { themes } from 'Utilities';
 
 const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
   const { apidata, totalCount, curPage, curSorting, sortingOptions } = reposData;
@@ -32,14 +30,12 @@ const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
       {activeTab === 1 && (
         <Container maxWidth='lg' column justify='center' width='100%'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
-          <ThemeProvider theme={themes.textColor}>
-            <Container maxWidth='lg' column width='100%' justify='center'>
-              {!!totalCount && <TotalResults total={totalCount} />}
-              {apidata.map(item => (
-                <ReposCard key={item.id} {...item} />
-              ))}
-            </Container>
-          </ThemeProvider>
+          <Container maxWidth='lg' column width='100%' justify='center'>
+            {!!totalCount && <TotalResults total={totalCount} />}
+            {apidata.map(item => (
+              <ReposCard key={item.id} {...item} />
+            ))}
+          </Container>
           {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
         </Container>
       )}

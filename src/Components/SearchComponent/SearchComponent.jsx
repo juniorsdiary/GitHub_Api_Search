@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchUsersData, setSearchValue, fetchReposData } from 'Store';
-import { FormContainer, InputField, Button } from 'Modules';
+import { Container, InputField, Button } from 'Modules';
 
 const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue, usersSorting, reposSorting }) => {
   const [searchValue, setValue] = useState('');
@@ -25,12 +25,12 @@ const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue, u
   }, []);
 
   return (
-    <FormContainer onSubmit={submitSearch}>
-      <InputField size='1.5em' type='text' id='search_input' value={searchValue} onChange={setInputValue} />
+    <Container as='form' align='center' onSubmit={submitSearch}>
+      <InputField size='1.5rem' type='text' id='search_input' value={searchValue} onChange={setInputValue} />
       <Button type='submit' id='submit_search'>
         Search
       </Button>
-    </FormContainer>
+    </Container>
   );
 };
 

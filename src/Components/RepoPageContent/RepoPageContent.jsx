@@ -15,28 +15,28 @@ const RepoPageContent = ({ fetch_name, data, activeTab, setActiveTab }) => {
   const { width, position } = useTabSwitch(activeTab, [forksRef, starsRef, contribsRef]);
 
   return (
-    <Container padding='10px 15px' maxWidth='lg' width='100%' column>
+    <Container padding='1rem 1.25rem' maxWidth='lg' width='100%' column>
       <Text size='2rem' bold color='#0366d6'>
         {name}
       </Text>
       {description && <Text size='1.2rem'>{description}</Text>}
-      <Container padding='15px 0' maxWidth='sm' width='100%' column>
+      <Container padding='1rem 0' maxWidth='sm' width='100%' column>
         {license && (
-          <Container row padding='5px 0' align='center'>
+          <Container row padding='0.5rem 0' align='center'>
             <GoLaw size='15' />
-            <Text padding='0 5px' size='1.2rem'>
+            <Text padding='0 0.5rem' size='1.2rem'>
               {license.name}
             </Text>
           </Container>
         )}
-        <Text padding='5px 0' size='1.2rem'>{`Updated ${convertTime(updated_at)}`}</Text>
-        <Text padding='5px 0' size='1.2rem'>{`Created ${convertTime(created_at)}`}</Text>
-        <Text padding='5px 0' size='1.2rem'>
+        <Text padding='0.5rem 0' size='1.2rem'>{`Updated ${convertTime(updated_at)}`}</Text>
+        <Text padding='0.5rem 0' size='1.2rem'>{`Created ${convertTime(created_at)}`}</Text>
+        <Text padding='0.5rem 0' size='1.2rem'>
           {language}
         </Text>
       </Container>
       <Button as='a' href={html_url} target='blank'>
-        <Text padding='0 10px 0 0' size='1.2rem'>
+        <Text padding='0 0.5rem 0 0' size='1.2rem'>
           See at GitHub
         </Text>
         <GoMarkGithub size='15' />
@@ -46,20 +46,20 @@ const RepoPageContent = ({ fetch_name, data, activeTab, setActiveTab }) => {
       </Text>
       <UserCard {...owner} />
       <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
-        <TabItem padding='10px' active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={forksRef}>
-          <Text padding='0 10px 0 0' size='1.2rem'>
+        <TabItem padding='0.5rem' active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={forksRef}>
+          <Text padding='0 0.5rem 0 0' size='1.2rem'>
             Forks
           </Text>
           <GoRepoForked size='15' />
         </TabItem>
-        <TabItem padding='10px' active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={starsRef}>
-          <Text padding='0 10px 0 0' size='1.2rem'>
+        <TabItem padding='0.5rem' active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={starsRef}>
+          <Text padding='0 0.5rem 0 0' size='1.2rem'>
             Stargazers
           </Text>
           <GoStar size='15' />
         </TabItem>
-        <TabItem padding='10px' active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={contribsRef}>
-          <Text padding='0 10px 0 0' size='1.2rem'>
+        <TabItem padding='0.5rem' active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={contribsRef}>
+          <Text padding='0 0.5rem 0 0' size='1.2rem'>
             Contributors
           </Text>
           <GoOrganization size='15' />

@@ -4,8 +4,8 @@ import { Text, Container } from 'Modules';
 import { devideNumber } from 'Utilities';
 
 const TotalResults = ({ total }) => (
-  <Container padding='10px 0' row justify='center' align='center'>
-    <Text padding='0 10px' size='1.5rem' bold color='black'>
+  <Container padding='0.5rem 0' row justify='center' align='center'>
+    <Text padding='0 0.5rem' size='1.5rem' bold color='black'>
       Total Results:
     </Text>
     <Text size='1.5rem' color='black'>

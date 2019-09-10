@@ -14,3 +14,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('container')
 );
+
+// TODO: валидация инпута если пустой инпут
