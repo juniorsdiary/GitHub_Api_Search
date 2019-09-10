@@ -23,6 +23,16 @@ export const fetchReposData = (searchValue, pageInd, perPageNum, sortingOptions)
   });
 };
 
+export const fetchRepo = id => dispatch => {
+  const url = `${constants.API_BASE}/repos/${id}`;
+  axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(data => {
+    dispatch({
+      type: types.FETCH_REPO,
+      payload: data.data,
+    });
+  });
+};
+
 export const changeReposPage = number => {
   return {
     type: types.CHANGE_CUR_PAGE,

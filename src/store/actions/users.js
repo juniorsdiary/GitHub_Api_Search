@@ -24,7 +24,7 @@ export const fetchUsersData = (searchValue, pageInd, perPageNum, sortingOptions)
 };
 
 export const fetchUser = login => dispatch => {
-  const url = `${constants.API_BASE}/users/${login}`;
+  const url = `${constants.API_BASE}/${constants.USERS}/${login}`;
   axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(data => {
     dispatch({
       type: types.FETCH_USER,

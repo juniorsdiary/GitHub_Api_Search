@@ -18,15 +18,15 @@ const ReposCard = ({ id, full_name, stargazers_count, language, description, upd
   return (
     <RepoContainer padding='10px' maxWidth='sm' width='100%' align='center'>
       <Container maxWidth='sm' width='100%' justify='space-between' align='center'>
-        <Text size='1.5rem' bold color='#0366d6'>
+        <Text size='1.2rem' bold color='#0366d6'>
           {full_name}
         </Text>
-        <Button as={Link} to={`/repository/${id}`} size='1em'>
+        <Button as={Link} to={`/repository/${full_name}`} size='1em'>
           Details
         </Button>
       </Container>
       <Container maxWidth='sm' width='100%'>
-        {description && <Text size='1.2rem'>{description}</Text>}
+        {description && <Text size='1rem'>{description}</Text>}
       </Container>
       <DetailsContainer maxWidth='sm' width='100%' align='center' justify='space-between'>
         {license && <Text size='1.2rem'>{license.name}</Text>}

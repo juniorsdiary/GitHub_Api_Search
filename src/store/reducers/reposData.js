@@ -6,6 +6,7 @@ const initialState = {
   active: false,
   apidata: [],
   totalCount: 0,
+  singleRepo: {},
   curPage: 1,
   curSorting: {
     sorting: 'Best Match',
@@ -74,6 +75,11 @@ export default function reposData(state = initialState, action) {
     return {
       ...state,
       curPage: payload,
+    };
+  } else if (type === types.FETCH_REPO) {
+    return {
+      ...state,
+      singleRepo: payload,
     };
   }
   return state;

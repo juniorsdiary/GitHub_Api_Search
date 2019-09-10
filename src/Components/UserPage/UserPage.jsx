@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { GoMarkGithub } from 'react-icons/go';
+import { GoMarkGithub, GoStar, GoRepo, GoPerson } from 'react-icons/go';
 import { TabsContainer, Container, TabItem, Text, Button } from 'Modules';
 import { useFetch, useTabSwitch } from 'Utilities';
 import { UserCard, ReposCard, UserDescription, TabContent } from 'Components';
 import { setCardTab, fetchUser } from 'Store';
+// import { GoRepoForked, , GoMarkGithub, GoOrganization } from 'react-icons/go';
 
 const UserPage = ({ data, setActiveTab, activeTab, fetchData, match }) => {
   const login = match.params.login;
@@ -26,7 +27,6 @@ const UserPage = ({ data, setActiveTab, activeTab, fetchData, match }) => {
   const followersRef = useRef();
   const followingRef = useRef();
   const { width, position } = useTabSwitch(activeTab, [followersRef, followingRef, reposTabRef, starsRef]);
-  console.log(stars_data);
   return (
     <Container padding='0 10px' maxWidth='lg' width='100%' column>
       <UserDescription data={rest} />
@@ -38,16 +38,28 @@ const UserPage = ({ data, setActiveTab, activeTab, fetchData, match }) => {
       </Button>
       <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
         <TabItem padding='10px' active={activeTab === 0} onClick={() => setActiveTab(0)} align='center' ref={followersRef}>
-          <Text size='1.5rem'>Followers</Text>
+          <Text padding='0 10px 0 0' size='1rem'>
+            Followers
+          </Text>
+          <GoPerson size='15' />
         </TabItem>
         <TabItem padding='10px' active={activeTab === 1} onClick={() => setActiveTab(1)} align='center' ref={followingRef}>
-          <Text size='1.5rem'>Following</Text>
+          <Text padding='0 10px 0 0' size='1rem'>
+            Following
+          </Text>
+          <GoPerson size='15' />
         </TabItem>
         <TabItem padding='10px' active={activeTab === 2} onClick={() => setActiveTab(2)} align='center' ref={reposTabRef}>
-          <Text size='1.5rem'>Repositories</Text>
+          <Text padding='0 10px 0 0' size='1rem'>
+            Repositories
+          </Text>
+          <GoRepo size='15' />
         </TabItem>
         <TabItem padding='10px' active={activeTab === 3} onClick={() => setActiveTab(3)} align='center' ref={starsRef}>
-          <Text size='1.5rem'>Stars</Text>
+          <Text padding='0 10px 0 0' size='1rem'>
+            Stars
+          </Text>
+          <GoStar size='15' />
         </TabItem>
       </TabsContainer>
       {activeTab === 0 && <TabContent data={followers_data} MapComponent={UserCard} total={followers} />}

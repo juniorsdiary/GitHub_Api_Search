@@ -23,7 +23,7 @@ const App = () => {
     <>
       <ThemeProvider theme={themes.background}>
         <Header>
-          <Text padding='10px 0' color='white' size='2rem' align='center' bold>
+          <Text padding='10px 0' color='white' size='2rem' bold>
             Search API
           </Text>
         </Header>
@@ -31,7 +31,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route path='/user/:login' component={UserPage} />
-        <Route path='/repository/:id' component={ReposPage} />
+        <Route path='/repository/:owner_name/:repo' component={ReposPage} />
       </Switch>
     </>
   );

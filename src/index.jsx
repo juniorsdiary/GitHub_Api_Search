@@ -14,6 +14,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('container')
 );
-
-// TODO: add some data to the repos Repos page
-// TODO: make layout for ReposPage
