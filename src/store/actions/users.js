@@ -24,12 +24,14 @@ export const fetchUsersData = (searchValue, pageInd, perPageNum, sortingOptions)
 };
 
 export const fetchUser = login => dispatch => {
+  dispatch({ type: types.DATA_FETCHING, payload: true });
   const url = `${constants.API_BASE}/${constants.USERS}/${login}`;
   axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(data => {
     dispatch({
       type: types.FETCH_USER,
       payload: data.data,
     });
+    dispatch({ type: types.DATA_FETCHING, payload: false });
   });
 };
 

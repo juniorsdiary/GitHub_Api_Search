@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchReposData } from 'Store';
-import { ReposCard, Pagination, SortingOptions, TabContent } from 'Components';
+import { ReposCard, Pagination, SortingOptions, TotalResults } from 'Components';
 import { Container } from 'Modules';
 import { ThemeProvider } from 'styled-components';
 import { themes } from 'Utilities';
@@ -33,7 +33,12 @@ const RepositoriesContent = ({ fetchData, changePage, appData, reposData }) => {
         <Container maxWidth='lg' column justify='center' width='100%'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <ThemeProvider theme={themes.textColor}>
-            <TabContent data={apidata} MapComponent={ReposCard} total={totalCount} />
+            <Container maxWidth='lg' column width='100%' justify='center'>
+              {!!totalCount && <TotalResults total={totalCount} />}
+              {apidata.map(item => (
+                <ReposCard key={item.id} {...item} />
+              ))}
+            </Container>
           </ThemeProvider>
           {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
         </Container>

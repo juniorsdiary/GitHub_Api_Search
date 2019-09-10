@@ -1,21 +1,4 @@
-import { useLayoutEffect, useEffect, useState, useRef } from 'react';
-import axios from 'axios';
-import { AUTH, API_BASE } from './constants';
-
-export const useFetch = (type, name, subject) => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const url = `${API_BASE}/${type}/${name}/${subject}`;
-    const fetchData = async () =>
-      await axios({ method: 'get', url, headers: { Authorization: `token ${AUTH}` } }).then(data => {
-        setData(data.data);
-      });
-    if (name) {
-      fetchData();
-    }
-  }, [type, subject, name]);
-  return data;
-};
+import { useLayoutEffect, useState, useRef } from 'react';
 
 export const useTabSwitch = (activeTab, refs) => {
   const [values, setValue] = useState({ width: 0, position: 0 });

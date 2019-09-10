@@ -24,12 +24,14 @@ export const fetchReposData = (searchValue, pageInd, perPageNum, sortingOptions)
 };
 
 export const fetchRepo = id => dispatch => {
+  dispatch({ type: types.DATA_FETCHING, payload: true });
   const url = `${constants.API_BASE}/repos/${id}`;
   axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(data => {
     dispatch({
       type: types.FETCH_REPO,
       payload: data.data,
     });
+    dispatch({ type: types.DATA_FETCHING, payload: false });
   });
 };
 

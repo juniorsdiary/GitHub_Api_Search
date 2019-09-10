@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchUsersData } from 'Store';
-import { UserCard, Pagination, SortingOptions, TabContent } from 'Components';
+import { UserCard, Pagination, SortingOptions, TotalResults } from 'Components';
 import { Container } from 'Modules';
 import { themes } from 'Utilities';
 import { ThemeProvider } from 'styled-components';
@@ -26,14 +26,18 @@ const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
     },
     [curPage, curPerPage, curSearchValue, fetchData, sortingOptions]
   );
-
   return (
     <>
       {activeTab === 0 && (
         <Container maxWidth='lg' column justify='center' width='100%'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
           <ThemeProvider theme={themes.textColor}>
-            <TabContent data={apidata} MapComponent={UserCard} total={totalCount} />
+            <Container maxWidth='lg' column width='100%' justify='center'>
+              {!!totalCount && <TotalResults total={totalCount} />}
+              {apidata.map(item => (
+                <UserCard key={item.id} {...item} />
+              ))}
+            </Container>
           </ThemeProvider>
           {!!totalCount && <Pagination total={totalCount} perPage={curPerPage} curPage={curPage} changePage={fetchAnotherPage} />}
         </Container>

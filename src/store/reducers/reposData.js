@@ -3,10 +3,10 @@ import * as types from '../types';
 const initialState = {
   id: 1,
   title: 'Repositories',
-  active: false,
   apidata: [],
   totalCount: 0,
   singleRepo: {},
+  isFetching: true,
   curPage: 1,
   curSorting: {
     sorting: 'Best Match',
@@ -80,6 +80,11 @@ export default function reposData(state = initialState, action) {
     return {
       ...state,
       singleRepo: payload,
+    };
+  } else if (type === types.DATA_FETCHING) {
+    return {
+      ...state,
+      isFetching: payload,
     };
   }
   return state;

@@ -3,10 +3,9 @@ import * as types from '../types';
 const initialState = {
   id: 0,
   title: 'Users',
-  active: true,
   apidata: [],
   singleUser: {},
-  activeUserCard: false,
+  isFetching: true,
   totalCount: 0,
   curPage: 1,
   curSorting: {
@@ -81,6 +80,11 @@ export default function usersData(state = initialState, action) {
     return {
       ...state,
       singleUser: payload,
+    };
+  } else if (type === types.DATA_FETCHING) {
+    return {
+      ...state,
+      isFetching: payload,
     };
   }
   return state;
