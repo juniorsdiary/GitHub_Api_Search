@@ -6,15 +6,20 @@ import { Container, InputField, Button } from 'Modules';
 
 const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue, usersSorting, reposSorting }) => {
   const [searchValue, setValue] = useState('');
+  const [invalidValue, setValidation] = useState(false);
 
   /* eslint-disable */
-
   const submitSearch = useCallback(
     e => {
       e.preventDefault();
-      setSearchValue(searchValue);
-      fetchUsers(searchValue, 1, perPageNum, usersSorting);
-      fetchRepos(searchValue, 1, perPageNum, reposSorting);
+      if (searchValue) {
+        setSearchValue(searchValue);
+        fetchUsers(searchValue, 1, perPageNum, usersSorting);
+        fetchRepos(searchValue, 1, perPageNum, reposSorting);
+        setValidation(false);
+      } else {
+        setValidation(true);
+      }
     },
     [fetchRepos, fetchUsers, perPageNum, searchValue, setSearchValue]
   );
@@ -26,7 +31,14 @@ const SearchComponent = ({ fetchUsers, fetchRepos, perPageNum, setSearchValue, u
 
   return (
     <Container xs='6' sm='4' md='2' as='form' justify='center' align='center' onSubmit={submitSearch}>
-      <InputField type='text' id='search_input' value={searchValue} onChange={setInputValue} />
+      <InputField
+        error={invalidValue}
+        type='text'
+        id='search_input'
+        value={searchValue}
+        onFocus={() => setValidation(false)}
+        onChange={setInputValue}
+      />
       <Button type='submit' id='submit_search'>
         Search
       </Button>

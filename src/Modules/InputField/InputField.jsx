@@ -1,7 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
+const pulse = keyframes`
+  from {
+    box-shadow: none;
 
+  }
+  to {
+    box-shadow: 0 0 0 0.2em rgb(255, 0, 0);
+  }
+`;
 const StyledInput = styled.input.attrs(props => ({
   type: props.type,
   name: props.name || props.id,
@@ -19,6 +27,7 @@ const StyledInput = styled.input.attrs(props => ({
     box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075), 0 0 0 0.2em rgba(3, 102, 214, 0.3);
     outline: none;
   }
+  animation: ${props => props.error && pulse} 0.5s linear infinite alternate;
 `;
 
 const InputField = ({ onChange, ...props }) => {

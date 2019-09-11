@@ -6,7 +6,7 @@ const initialState = {
   activeTab: 0,
   activeCardTab: 0,
   isFetched: false,
-  mode: 'dark',
+  mode: 'light',
 };
 
 export default function appData(state = initialState, action) {
