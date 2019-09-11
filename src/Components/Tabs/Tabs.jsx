@@ -8,6 +8,7 @@ import { useTabSwitch } from 'Utilities';
 const Tabs = ({ curAPI, totalUsers, totalRepos, activeTab, setTabActive }) => {
   const usersTabRef = useRef();
   const reposTabRef = useRef();
+
   const { width, position } = useTabSwitch(activeTab, [usersTabRef, reposTabRef]);
 
   return (

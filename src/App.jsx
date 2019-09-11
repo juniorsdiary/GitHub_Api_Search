@@ -9,10 +9,9 @@ import { MainPage, UserPage, ReposPage } from 'Components';
 import { Text, Container, StyledIcon } from 'Modules';
 
 const Global = createGlobalStyle`
-  #container {
-    display: flex;
+  body {
+    overflow-y: overlay;
     transition: all 0.2s linear;
-    height: 100vh;
     ${props =>
       props.mode === 'light'
         ? {
@@ -38,14 +37,14 @@ const App = () => {
   return (
     <>
       <Global mode={mode === 'light' ? 'light' : 'dark'} />
-      <Container card mode={mode} as='header' justify='space-between' align='center'>
+      <Container card mode={mode} as='header' justify='space-between' align='center' padding='1rem'>
         <Text padding='1rem' size='2rem' bold>
           Search API
         </Text>
         {mode === 'light' ? (
-          <StyledIcon cursor='pointer' as={FaSun} size='20' onClick={() => switchMode('dark')} />
+          <StyledIcon cursor='pointer' tabIndex='0' as={FaMoon} size='20' onKeyPress={() => switchMode('dark')} onClick={() => switchMode('dark')} />
         ) : (
-          <StyledIcon cursor='pointer' as={FaMoon} size='20' onClick={() => switchMode('light')} />
+          <StyledIcon cursor='pointer' tabIndex='0' as={FaSun} size='20' onKeyPress={() => switchMode('light')} onClick={() => switchMode('light')} />
         )}
       </Container>
       <Switch>

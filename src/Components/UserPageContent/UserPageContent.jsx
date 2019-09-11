@@ -16,9 +16,9 @@ const UserPageContent = ({ data, activeTab, setActiveTab }) => {
   const { width, position } = useTabSwitch(activeTab, [followersRef, followingRef, reposTabRef, starsRef]);
 
   return (
-    <Container padding='0 1rem' column justify='center'>
+    <Container xs='11' column justify='center'>
       <UserDescription data={rest} />
-      <TabsContainer position={position} afterWidth={width} row xs='10' sm='6' md='4'>
+      <TabsContainer position={position} afterWidth={width} row xs='11' sm='6' md='5'>
         <TabItem padding='0.7rem' active={activeTab === 0} onClick={() => setActiveTab(0)} justify='center' align='center' ref={followersRef}>
           <Text padding='0 0.7rem 0 0' size='1rem'>
             Followers

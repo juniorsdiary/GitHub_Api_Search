@@ -12,9 +12,9 @@ const StyledTab = styled(Container)`
   }
 `;
 /* eslint-disable react/prop-types */
-const TabItem = ({ children, ...rest }, ref) => {
+const TabItem = ({ children, onClick, ...rest }, ref) => {
   return (
-    <StyledTab {...rest} ref={ref}>
+    <StyledTab role='button' tabIndex='0' onKeyPress={onClick} onClick={onClick} {...rest} ref={ref}>
       {children}
     </StyledTab>
   );
