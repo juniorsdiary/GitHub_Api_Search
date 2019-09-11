@@ -18,27 +18,27 @@ const UserPageContent = ({ data, activeTab, setActiveTab }) => {
   return (
     <Container xs='11' column justify='center'>
       <UserDescription data={rest} />
-      <TabsContainer position={position} afterWidth={width} row xs='11' sm='6' md='5'>
-        <TabItem padding='0.7rem' active={activeTab === 0} onClick={() => setActiveTab(0)} justify='center' align='center' ref={followersRef}>
-          <Text padding='0 0.7rem 0 0' size='1rem'>
+      <TabsContainer position={position} afterWidth={width} row sm='6'>
+        <TabItem padding='0.5rem' active={activeTab === 0} onClick={() => setActiveTab(0)} justify='center' align='center' ref={followersRef}>
+          <Text padding='0 0.5rem 0 0' size='1rem'>
             Followers
           </Text>
           <GoPerson size='15' />
         </TabItem>
-        <TabItem padding='0.7rem' active={activeTab === 1} onClick={() => setActiveTab(1)} justify='center' align='center' ref={followingRef}>
-          <Text padding='0 0.7rem 0 0' size='1rem'>
+        <TabItem padding='0.5rem' active={activeTab === 1} onClick={() => setActiveTab(1)} justify='center' align='center' ref={followingRef}>
+          <Text padding='0 0.5rem 0 0' size='1rem'>
             Following
           </Text>
           <GoPerson size='15' />
         </TabItem>
-        <TabItem padding='0.7rem' active={activeTab === 2} onClick={() => setActiveTab(2)} justify='center' align='center' ref={reposTabRef}>
-          <Text padding='0 0.7rem 0 0' size='1rem'>
+        <TabItem padding='0.5rem' active={activeTab === 2} onClick={() => setActiveTab(2)} justify='center' align='center' ref={reposTabRef}>
+          <Text padding='0 0.5rem 0 0' size='1rem'>
             Repositories
           </Text>
           <GoRepo size='15' />
         </TabItem>
-        <TabItem padding='0.7rem' active={activeTab === 3} onClick={() => setActiveTab(3)} justify='center' align='center' ref={starsRef}>
-          <Text padding='0 0.7rem 0 0' size='1rem'>
+        <TabItem padding='0.5rem' active={activeTab === 3} onClick={() => setActiveTab(3)} justify='center' align='center' ref={starsRef}>
+          <Text padding='0 0.5rem 0 0' size='1rem'>
             Stars
           </Text>
           <GoStar size='15' />

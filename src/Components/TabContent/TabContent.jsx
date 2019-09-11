@@ -9,10 +9,8 @@ const TabContent = ({ active, search, total, MapComponent }) => {
   useEffect(() => {
     let isMounted = true;
     const url = `${constants.API_BASE}/${search}`;
-    const CancelToken = axios.CancelToken;
-    const source = CancelToken.source();
     const fetchData = async () =>
-      await axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }, { cancelToken: source.token }).then(({ data }) => {
+      await axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(({ data }) => {
         if (isMounted) {
           setData(data);
         }
