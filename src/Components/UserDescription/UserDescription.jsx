@@ -31,7 +31,7 @@ const UserDescription = ({ data }) => {
         {blog && (
           <Container padding='0.5rem 0' align='center'>
             <GoLink size='15' />
-            <Text as='a' href={blog_link} target='blank' padding='0 0.5rem' size='1.2rem' color='#0366d6'>
+            <Text as='a' href={blog_link} target='blank' padding='0 0.5rem' size='1.2rem'>
               {blog}
             </Text>
           </Container>

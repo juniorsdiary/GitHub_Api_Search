@@ -5,16 +5,10 @@ import Container from '../Container/Container.jsx';
 const StyledTab = styled(Container)`
   position: relative;
   cursor: pointer;
+  transition: color 0.2s linear;
+  color: ${props => (props.active ? 'inherit' : 'rgba(134, 134, 134)')};
   :hover {
-    ::after {
-      content: '';
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.2);
-      bottom: 0;
-      left: 0;
-    }
+    color: inherit;
   }
 `;
 /* eslint-disable react/prop-types */

@@ -13,7 +13,7 @@ const StyleTabsContainer = styled(Container)`
     bottom: 0;
     width: ${props => `${props.afterWidth}`};
     left: ${props => `${props.position}`};
-    transition: all 0.3s linear;
+    transition: width 0.2s linear, left 0.2s linear;
   }
 `;
 

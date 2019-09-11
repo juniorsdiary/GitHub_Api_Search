@@ -1,4 +1,3 @@
-import Header from './Header/Header.jsx';
 import Container from './Container/Container.jsx';
 import Text from './Text/Text.jsx';
 import FormContainer from './FormContainer/FormContainer.jsx';
@@ -11,5 +10,20 @@ import Portal from './Portal/Portal.jsx';
 import ModalDialog from './ModalDialog/ModalDialog.jsx';
 import BreadCrumps from './BreadCrumps/BreadCrumps.jsx';
 import PageButton from './PageButton/PageButton.jsx';
+import StyledIcon from './Icon/Icons.jsx';
 
-export { PageButton, Header, Container, Text, FormContainer, InputField, Button, TabsContainer, TabItem, Avatar, Portal, ModalDialog, BreadCrumps };
+export {
+  StyledIcon,
+  PageButton,
+  Container,
+  Text,
+  FormContainer,
+  InputField,
+  Button,
+  TabsContainer,
+  TabItem,
+  Avatar,
+  Portal,
+  ModalDialog,
+  BreadCrumps,
+};

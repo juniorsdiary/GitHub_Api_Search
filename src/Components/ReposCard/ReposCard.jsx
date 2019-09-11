@@ -1,34 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Text, Button } from 'Modules';
-import styled from 'styled-components';
-import { convertTime } from 'Utilities';
+import { useSelector } from 'react-redux';
 import { GoStar } from 'react-icons/go';
 import { Link } from 'react-router-dom';
-
-const RepoContainer = styled(Container)`
-  flex-wrap: wrap;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-`;
-const DetailsContainer = styled(Container)`
-  margin-top: 1em;
-`;
+import { Container, Text, Button } from 'Modules';
+import { convertTime } from 'Utilities';
 
 const ReposCard = ({ id, full_name, stargazers_count, language, description, updated_at, license }) => {
+  const mode = useSelector(state => state.appData.mode);
   return (
-    <RepoContainer padding='0.5rem' maxWidth='sm' width='100%' align='center'>
+    <Container mode={mode} card column padding='0.5rem' maxWidth='sm' width='100%' align='center'>
       <Container maxWidth='sm' width='100%' justify='space-between' align='center'>
         <Text size='1.2rem' bold color='#0366d6'>
           {full_name}
         </Text>
-        <Button as={Link} to={`/repository/${full_name}`} size='1em'>
+        <Button as={Link} to={`/repository/${full_name}`}>
           Details
         </Button>
       </Container>
       <Container maxWidth='sm' width='100%'>
-        {description && <Text size='1rem'>{description}</Text>}
+        {description && <Text padding='0.5rem 0'>{description}</Text>}
       </Container>
-      <DetailsContainer maxWidth='sm' width='100%' align='center' justify='space-between'>
+      <Container margin='1rem 0 0' maxWidth='sm' width='100%' align='center' justify='space-between'>
         {license && <Text size='1.2rem'>{license.name}</Text>}
         <Text size='1rem'>{`Updated ${convertTime(updated_at)}`}</Text>
         <Text size='1.2rem'>{language}</Text>
@@ -36,8 +29,8 @@ const ReposCard = ({ id, full_name, stargazers_count, language, description, upd
           <GoStar size='17' />
           <Text size='1.2rem'>{stargazers_count}</Text>
         </Container>
-      </DetailsContainer>
-    </RepoContainer>
+      </Container>
+    </Container>
   );
 };
 

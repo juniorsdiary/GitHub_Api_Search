@@ -7,12 +7,12 @@ const StyledInput = styled.input.attrs(props => ({
   name: props.name || props.id,
   id: props.id,
 }))`
-  margin: 5px;
+  margin: 0.5rem;
   flex: 1;
   border: 1px solid #d1d5da;
   border-radius: 5px;
-  font-size: ${props => props.size || '1em'};
-  padding: 5px;
+  font-size: 1rem;
+  padding: 0.5rem;
   transition: all 0.2s linear;
   :focus {
     border-color: #2188ff;

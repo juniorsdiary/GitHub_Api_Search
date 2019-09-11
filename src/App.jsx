@@ -1,15 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { MainPage, UserPage, ReposPage } from 'Components';
-import { Header, Text, Container } from 'Modules';
 import { hot } from 'react-hot-loader/root';
 import { createGlobalStyle } from 'styled-components';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
+import { MainPage, UserPage, ReposPage } from 'Components';
+import { Text, Container, StyledIcon } from 'Modules';
+
 const Global = createGlobalStyle`
   #container {
+    transition: all 0.2s linear;
     ${props =>
       props.mode === 'light'
         ? {
@@ -23,18 +24,29 @@ const Global = createGlobalStyle`
     height: 100vh;
   }
 `;
-const App = ({ mode, switchMode }) => {
+
+const App = () => {
+  const mode = useSelector(state => state.appData.mode);
+  const dispatch = useDispatch();
+  const switchMode = useCallback(
+    value => {
+      dispatch({ type: 'MODE', payload: value });
+    },
+    [dispatch]
+  );
   return (
     <>
       <Global mode={mode === 'light' ? 'dark' : 'light'} />
-      <Header>
-        <Container align='center'>
-          <Text padding='10px 0' size='2rem' bold>
-            Search API
-          </Text>
-          {mode === 'light' ? <FaMoon size='20' onClick={() => switchMode('dark')} /> : <FaSun size='20' onClick={() => switchMode('light')} />}
-        </Container>
-      </Header>
+      <Container as='header' width='100%' justify='center' align='center'>
+        <Text padding='10px 0' size='2rem' bold>
+          Search API
+        </Text>
+        {mode === 'light' ? (
+          <StyledIcon cursor='pointer' as={FaSun} size='20' onClick={() => switchMode('dark')} />
+        ) : (
+          <StyledIcon cursor='pointer' as={FaMoon} size='20' onClick={() => switchMode('light')} />
+        )}
+      </Container>
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route path='/user/:login' component={UserPage} />
@@ -43,18 +55,5 @@ const App = ({ mode, switchMode }) => {
     </>
   );
 };
-App.propTypes = {
-  mode: PropTypes.string,
-  switchMode: PropTypes.func,
-};
 
-export default connect(
-  state => ({
-    mode: state.appData.mode,
-  }),
-  dispatch => ({
-    switchMode: value => {
-      dispatch({ type: 'MODE', payload: value });
-    },
-  })
-)(hot(App));
+export default hot(App);
