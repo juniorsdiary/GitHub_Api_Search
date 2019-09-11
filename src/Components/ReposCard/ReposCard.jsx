@@ -9,8 +9,8 @@ import { convertTime } from 'Utilities';
 const ReposCard = ({ id, full_name, stargazers_count, language, description, updated_at, license }) => {
   const mode = useSelector(state => state.appData.mode);
   return (
-    <Container mode={mode} card column padding='0.5rem' maxWidth='sm' width='100%' align='center'>
-      <Container maxWidth='sm' width='100%' justify='space-between' align='center'>
+    <Container mode={mode} card column padding='0.5rem' align='center'>
+      <Container justify='space-between' align='center'>
         <Text size='1.2rem' bold color='#0366d6'>
           {full_name}
         </Text>
@@ -18,16 +18,16 @@ const ReposCard = ({ id, full_name, stargazers_count, language, description, upd
           Details
         </Button>
       </Container>
-      <Container maxWidth='sm' width='100%'>
-        {description && <Text padding='0.5rem 0'>{description}</Text>}
-      </Container>
-      <Container margin='1rem 0 0' maxWidth='sm' width='100%' align='center' justify='space-between'>
+      <Container>{description && <Text padding='0.5rem 0'>{description}</Text>}</Container>
+      <Container margin='1rem 0 0' align='center' justify='space-between'>
         {license && <Text size='1.2rem'>{license.name}</Text>}
         <Text size='1rem'>{`Updated ${convertTime(updated_at)}`}</Text>
         <Text size='1.2rem'>{language}</Text>
-        <Container row align='center'>
+        <Container xs='1.5' row align='center' justify='flex-end'>
           <GoStar size='17' />
-          <Text size='1.2rem'>{stargazers_count}</Text>
+          <Text size='1.2rem' padding='0 0.5rem'>
+            {stargazers_count}
+          </Text>
         </Container>
       </Container>
     </Container>

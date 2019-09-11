@@ -9,7 +9,7 @@ const SortingOptions = ({ changeSorting, sortingOptions, curSorting }) => {
     </option>
   ));
   return (
-    <Container row align='center'>
+    <Container row align='center' xs='5' sm='4' md='3' lg='2'>
       <label htmlFor='sort_opt'>Sort: </label>
       <InputField as='select' name='sort_opt' id='sort_opt' onChange={e => changeSorting(e.target.value)}>
         {renderSortOptions}

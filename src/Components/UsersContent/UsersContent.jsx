@@ -27,9 +27,9 @@ const UsersContent = ({ appData, usersData, fetchData, changePage }) => {
   return (
     <>
       {activeTab === 0 && (
-        <Container maxWidth='lg' column justify='center' width='100%'>
+        <Container column justify='center'>
           <SortingOptions sortingOptions={sortingOptions} curSorting={curSorting} changeSorting={fetchAnotherSorting} />
-          <Container maxWidth='lg' column width='100%' justify='center'>
+          <Container column justify='center' sm='9' md='7' lg='6'>
             {!!totalCount && <TotalResults total={totalCount} />}
             {apidata.map(item => (
               <UserCard key={item.id} {...item} />

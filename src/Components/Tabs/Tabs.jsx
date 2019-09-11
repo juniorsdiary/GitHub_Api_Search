@@ -11,14 +11,14 @@ const Tabs = ({ curAPI, totalUsers, totalRepos, activeTab, setTabActive }) => {
   const { width, position } = useTabSwitch(activeTab, [usersTabRef, reposTabRef]);
 
   return (
-    <TabsContainer position={position} afterWidth={width} maxWidth={'lg'} row>
-      <TabItem active={activeTab === 0} onClick={() => setTabActive(0)} align='flex-end' ref={usersTabRef}>
-        <Text padding='0.5rem' size='1.5em'>
+    <TabsContainer position={position} afterWidth={width} xs='4' sm='3' md='2' row>
+      <TabItem active={activeTab === 0} onClick={() => setTabActive(0)} justify='center' ref={usersTabRef}>
+        <Text padding='0.5rem' size='1.2em'>
           Users
         </Text>
       </TabItem>
-      <TabItem active={activeTab === 1} onClick={() => setTabActive(1)} align='flex-end' ref={reposTabRef}>
-        <Text padding='0.5rem' size='1.5em'>
+      <TabItem active={activeTab === 1} onClick={() => setTabActive(1)} justify='center' ref={reposTabRef}>
+        <Text padding='0.5rem' size='1.2em'>
           Repositories
         </Text>
       </TabItem>

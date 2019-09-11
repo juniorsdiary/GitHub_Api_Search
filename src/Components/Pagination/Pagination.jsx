@@ -25,7 +25,7 @@ const Pagination = ({ total, perPage, curPage, changePage }) => {
   return (
     <>
       {pages > 2 && (
-        <Container row justify='center'>
+        <Container row justify='center' margin='1em'>
           <PageButton onClick={() => changePage(curPage - 1)} disabled={curPage === 1}>
             Previous
           </PageButton>

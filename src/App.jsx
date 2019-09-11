@@ -10,7 +10,9 @@ import { Text, Container, StyledIcon } from 'Modules';
 
 const Global = createGlobalStyle`
   #container {
+    display: flex;
     transition: all 0.2s linear;
+    height: 100vh;
     ${props =>
       props.mode === 'light'
         ? {
@@ -21,7 +23,6 @@ const Global = createGlobalStyle`
             background: '#24292e',
             color: '#fff',
           }};
-    height: 100vh;
   }
 `;
 
@@ -36,9 +37,9 @@ const App = () => {
   );
   return (
     <>
-      <Global mode={mode === 'light' ? 'dark' : 'light'} />
-      <Container as='header' width='100%' justify='center' align='center'>
-        <Text padding='10px 0' size='2rem' bold>
+      <Global mode={mode === 'light' ? 'light' : 'dark'} />
+      <Container card mode={mode} as='header' justify='space-between' align='center'>
+        <Text padding='1rem' size='2rem' bold>
           Search API
         </Text>
         {mode === 'light' ? (

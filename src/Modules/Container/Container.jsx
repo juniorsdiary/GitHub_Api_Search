@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { getWidth, breakPoints } from 'Utilities';
 
 const opacity = keyframes`
   from {
@@ -14,15 +15,22 @@ const opacity = keyframes`
 const StyledContainer = styled.div`
   position: relative;
   display: flex;
-  color: ${props => props.theme.color || 'inherit'};
-  background: ${props => props.theme.background || 'inherit'};
-  max-width: ${props => `${props.maxWidth}px`};
   border: 1px solid transparent;
   animation: ${opacity} 0.3s linear;
+  background: inherit;
   ${props => props.padding && { padding: props.padding }};
   ${props => props.margin && { margin: props.margin }};
-  ${props => props.width && `width: ${props.width}`};
-  ${props => props.card && { borderBottom: `1px solid ${props.mode === 'dark' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 1)'}` }};
+  ${props => props.card && { borderBottom: `1px solid ${props.mode === 'dark' ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}` }};
+  ${({ xs }) => (xs ? `width: ${getWidth(xs)}` : 'width: 100%')};
+  @media only screen and (min-width: ${`${breakPoints.sm}px`}) {
+    ${({ sm }) => sm && `width: ${getWidth(sm)}`};
+  }
+  @media only screen and (min-width: ${`${breakPoints.md}px`}) {
+    ${({ md }) => md && `width: ${getWidth(md)}`};
+  }
+  @media only screen and (min-width: ${`${breakPoints.lg}px`}) {
+    ${({ lg }) => lg && `width: ${getWidth(lg)}`};
+  }
   ${({ row, column, justify, align }) => {
     const dir = row ? 'row' : column ? 'column' : 'row';
     if (dir === 'row') {
@@ -40,14 +48,10 @@ const StyledContainer = styled.div`
     }
   }};
 `;
-
-const sizes = [{ size: 'xs', value: 560 }, { size: 'sm', value: 780 }, { size: 'md', value: 980 }, { size: 'lg', value: 1100 }];
 /* eslint-disable react/prop-types */
-const Container = (props, ref) => {
-  const { children, maxWidth = 'xs', ...rest } = props;
-  const value = sizes.find(size => size.size === maxWidth).value;
+const Container = ({ children, ...rest }, ref) => {
   return (
-    <StyledContainer maxWidth={value} {...rest} ref={ref}>
+    <StyledContainer {...rest} ref={ref}>
       {children}
     </StyledContainer>
   );

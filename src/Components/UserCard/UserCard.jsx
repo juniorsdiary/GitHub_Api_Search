@@ -7,9 +7,9 @@ import { Container, Avatar, Text, Button } from 'Modules';
 const UserCard = ({ avatar_url, login }) => {
   const mode = useSelector(state => state.appData.mode);
   return (
-    <Container mode={mode} card padding='0.5rem' maxWidth='sm' align='center' width='100%'>
-      <Avatar src={avatar_url} alt='avatar_logo' size='xs' />
-      <Container width='100%' maxWidth='sm' justify='space-between' align='center'>
+    <Container mode={mode} card padding='0.5rem' align='center'>
+      <Avatar src={avatar_url} alt='avatar_logo' size='2' />
+      <Container justify='space-between' align='center'>
         <Text padding='1rem' size='1.75rem' color='black' bold>
           {login}
         </Text>
