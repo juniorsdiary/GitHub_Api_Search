@@ -13,7 +13,7 @@ const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  ${props => (props.to || props.href) && { textDecoration: 'none' }}
+  ${props => (props.to || props.href) && { textDecoration: 'none' }};
   :hover {
     background-color: #e6ebf1;
     background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
