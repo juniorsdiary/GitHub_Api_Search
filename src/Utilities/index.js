@@ -1,6 +1,5 @@
 import * as constants from './constants';
 import { trimNumbers, devideNumber, definePageIndexes, convertTime, getWidth } from './functions';
-import themes from './themes';
 import { useTabSwitch } from './hooks';
 const breakPoints = {
   xs: 560,
@@ -8,4 +7,4 @@ const breakPoints = {
   md: 960,
   lg: 1100,
 };
-export { constants, trimNumbers, devideNumber, definePageIndexes, convertTime, useTabSwitch, themes, getWidth, breakPoints };
+export { constants, trimNumbers, devideNumber, definePageIndexes, convertTime, useTabSwitch, getWidth, breakPoints };
