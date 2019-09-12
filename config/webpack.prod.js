@@ -26,6 +26,7 @@ module.exports = merge(common, {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
         removeComments: true,
+        removeScriptTypeAttributes: true,
       },
     }),
   ],
