@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import { setCardTab, fetchUser } from 'Store';
 import { UserPageContent } from 'Components';
 
-const UserPage = ({ data, setActiveTab, activeTab, fetchData, match, isFetching }) => {
-  const login = match.params.login;
-
+const UserPage = ({ data, setActiveTab, activeTab, fetchData, match, isFetching, login }) => {
   useEffect(() => {
     fetchData(login);
   }, [fetchData, login]);
@@ -20,6 +18,7 @@ UserPage.propTypes = {
   fetchData: PropTypes.func,
   match: PropTypes.object,
   isFetching: PropTypes.bool,
+  login: PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -27,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
     data: state.usersData.singleUser,
     activeTab: state.appData.activeCardTab,
     isFetching: state.usersData.isFetching,
+    login: ownProps.location.search.match(/=(.+)/)[1],
   };
 };
 

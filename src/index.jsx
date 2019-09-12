@@ -15,4 +15,4 @@ ReactDOM.render(
   document.getElementById('container')
 );
 
-// TODO: валидация инпута если пустой инпут
+// TODO: routing for ziet

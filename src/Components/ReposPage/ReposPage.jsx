@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import { setCardTab, fetchRepo } from 'Store';
 import { RepoPageContent } from 'Components';
 
-const ReposPage = ({ data, setActiveTab, activeTab, fetchData, match, isFetching }) => {
-  const { owner_name, repo } = match.params;
-  const fetch_name = `${owner_name}/${repo}`;
+const ReposPage = ({ data, setActiveTab, activeTab, fetchData, match, isFetching, fetch_name }) => {
+  console.log(fetch_name);
   useEffect(() => {
     fetchData(fetch_name);
   }, [fetchData, fetch_name]);
@@ -20,6 +19,7 @@ ReposPage.propTypes = {
   setActiveTab: PropTypes.func,
   fetchData: PropTypes.func,
   match: PropTypes.object,
+  fetch_name: PropTypes.string,
   isFetching: PropTypes.bool,
 };
 
@@ -28,6 +28,7 @@ const mapStateToProps = (state, ownProps) => {
     data: state.reposData.singleRepo,
     activeTab: state.appData.activeCardTab,
     isFetching: state.reposData.isFetching,
+    fetch_name: ownProps.location.search.match(/=(.+)/)[1],
   };
 };
 

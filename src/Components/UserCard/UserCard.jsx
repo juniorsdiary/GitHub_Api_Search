@@ -13,7 +13,12 @@ const UserCard = ({ avatar_url, login }) => {
         <Text padding='1rem' size='1.75rem' color='black' bold>
           {login}
         </Text>
-        <Button as={Link} to={`/user/${login}`}>
+        <Button
+          as={Link}
+          to={{
+            pathname: '/user',
+            search: `?login=${login}`,
+          }}>
           Details
         </Button>
       </Container>

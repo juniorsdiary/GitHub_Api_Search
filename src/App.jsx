@@ -38,7 +38,7 @@ const App = () => {
     <>
       <Global mode={mode === 'light' ? 'light' : 'dark'} />
       <Container card mode={mode} as='header' justify='space-between' align='center' padding='1rem'>
-        <Text padding='1rem' size='2rem' bold>
+        <Text size='2rem' bold>
           Search API
         </Text>
         {mode === 'light' ? (
@@ -49,8 +49,8 @@ const App = () => {
       </Container>
       <Switch>
         <Route exact path='/' component={MainPage} />
-        <Route path='/user/:login' component={UserPage} />
-        <Route path='/repository/:owner_name/:repo' component={ReposPage} />
+        <Route path='/user' component={UserPage} />
+        <Route path='/repository' component={ReposPage} />
       </Switch>
     </>
   );

@@ -14,7 +14,12 @@ const ReposCard = ({ id, full_name, stargazers_count, language, description, upd
         <Text size='1.2rem' bold color='#0366d6'>
           {full_name}
         </Text>
-        <Button as={Link} to={`/repository/${full_name}`}>
+        <Button
+          as={Link}
+          to={{
+            pathname: '/repository',
+            search: `?name=${full_name}`,
+          }}>
           Details
         </Button>
       </Container>
