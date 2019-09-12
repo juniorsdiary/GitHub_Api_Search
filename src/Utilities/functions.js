@@ -42,10 +42,6 @@ export const convertTime = time => {
   }
 };
 
-export const trimNumbers = number => {
-  return number > 1000 ? (number / 1000).toFixed(0) + 'K' : number;
-};
-
 export const definePageIndexes = (pages, perPage, curPage) => {
   let firstPages = pages > 1 ? [1, 2] : [];
 

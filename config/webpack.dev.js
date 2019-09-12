@@ -24,13 +24,5 @@ module.exports = merge(common, {
     noInfo: true,
     open: true,
   },
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-    ],
-  },
   plugins: [new HtmlWebpackPlugin({ template: paths.appHtml, inject: true, favicon: `${paths.appSrc}/favicon.ico` }), new CleanWebpackPlugin()],
 });
