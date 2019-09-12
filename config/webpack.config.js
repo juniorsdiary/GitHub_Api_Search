@@ -9,6 +9,7 @@ module.exports = {
       Store: `${paths.appStore}`,
       Assets: `${paths.appAssets}`,
       Utilities: `${paths.appUtilities}`,
+      Routes: `${paths.appRoutes}`,
       'react-dom': '@hot-loader/react-dom',
     },
   },

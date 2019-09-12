@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
+
 const pulse = keyframes`
   from {
     box-shadow: none;
@@ -10,6 +11,7 @@ const pulse = keyframes`
     box-shadow: 0 0 0 0.2em rgb(255, 0, 0);
   }
 `;
+
 const StyledInput = styled.input.attrs(props => ({
   type: props.type,
   name: props.name || props.id,

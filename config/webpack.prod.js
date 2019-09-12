@@ -12,6 +12,8 @@ module.exports = merge(common, {
   output: {
     path: paths.appPublic,
     filename: '[name].[hash].js',
+    chunkFilename: '[name].bundle.js',
+    publicPath: '/',
   },
   optimization: {
     minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()],

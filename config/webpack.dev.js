@@ -9,6 +9,7 @@ module.exports = merge(common, {
   output: {
     path: paths.appPublic,
     filename: '[name].js',
+    chunkFilename: '[name].bundle.js',
     publicPath: '/',
   },
   devtool: 'source-map',

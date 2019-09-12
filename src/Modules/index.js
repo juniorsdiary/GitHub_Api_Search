@@ -1,29 +1,11 @@
-import Container from './Container/Container.jsx';
-import Text from './Text/Text.jsx';
-import FormContainer from './FormContainer/FormContainer.jsx';
-import InputField from './InputField/InputField.jsx';
-import Button from './Button/Button.jsx';
-import TabsContainer from './TabsContainer/TabsContainer.jsx';
-import TabItem from './TabItem/TabItem.jsx';
-import Avatar from './Avatar/Avatar.jsx';
-import Portal from './Portal/Portal.jsx';
-import ModalDialog from './ModalDialog/ModalDialog.jsx';
-import BreadCrumps from './BreadCrumps/BreadCrumps.jsx';
-import PageButton from './PageButton/PageButton.jsx';
-import StyledIcon from './Icon/Icons.jsx';
+import Text from './Text.jsx';
+import Avatar from './Avatar.jsx';
+import Button from './Button.jsx';
+import TabItem from './TabItem.jsx';
+import Container from './Container.jsx';
+import PageButton from './PageButton.jsx';
+import StyledIcon from './Icons.jsx';
+import InputField from './InputField.jsx';
+import TabsContainer from './TabsContainer.jsx';
 
-export {
-  StyledIcon,
-  PageButton,
-  Container,
-  Text,
-  FormContainer,
-  InputField,
-  Button,
-  TabsContainer,
-  TabItem,
-  Avatar,
-  Portal,
-  ModalDialog,
-  BreadCrumps,
-};
+export { Text, Avatar, Button, TabItem, Container, PageButton, StyledIcon, InputField, TabsContainer };

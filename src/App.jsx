@@ -5,9 +5,8 @@ import { hot } from 'react-hot-loader/root';
 import { createGlobalStyle } from 'styled-components';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { normalize } from 'polished';
-
-import { MainPage, UserPage, ReposPage } from 'Components';
 import { Text, Container, StyledIcon } from 'Modules';
+import { MainPage, UserPage, ReposPage } from 'Routes';
 
 const Global = createGlobalStyle`
   ${normalize()};

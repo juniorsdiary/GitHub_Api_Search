@@ -15,4 +15,5 @@ module.exports = {
   appStore: resolveApp('src/store'), // App source
   appPublic: resolveApp('public'), // Prod built files end up here
   appConfig: resolveApp('config'), // App config files
+  appRoutes: resolveApp('src/routes'),
 };
