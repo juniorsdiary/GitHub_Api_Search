@@ -5,7 +5,6 @@ import { setCardTab, fetchRepo } from 'Store';
 import { RepoPageContent } from 'Components';
 
 const ReposPage = ({ data, setActiveTab, activeTab, fetchData, match, isFetching, fetch_name }) => {
-  console.log(fetch_name);
   useEffect(() => {
     fetchData(fetch_name);
   }, [fetchData, fetch_name]);

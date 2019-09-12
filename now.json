@@ -2,6 +2,6 @@
   "routes": [
     {"src": "/", "dest": "/" },
     {"src": "/user", "dest": "/" },
-    {"src": "/repository", "dest": "/" },
+    {"src": "/repository", "dest": "/" }
   ]
 }
