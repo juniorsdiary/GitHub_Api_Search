@@ -1,9 +1,0 @@
-@import "smart-grid";
-@include reset();
-@import "default";
-
-#container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}

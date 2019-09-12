@@ -29,25 +29,4 @@ module.exports = merge(common, {
       },
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssPlugin.loader,
-          { loader: 'css-loader', options: { sourceMap: true } },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              config: {
-                path: `${paths.appConfig}/postcss.config.js`,
-              },
-            },
-          },
-          { loader: 'sass-loader', options: { sourceMap: true } },
-        ],
-      },
-    ],
-  },
 });

@@ -20,10 +20,8 @@ module.exports = {
       },
       {
         test: /\.js|jsx$/,
+        use: ['babel-loader', 'stylelint-custom-processor-loader'],
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,

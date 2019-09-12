@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { store, history } from 'Store';
 import App from './App.jsx';
-import './styles/styles.scss';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -14,5 +13,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('container')
 );
-
-// TODO: routing for ziet

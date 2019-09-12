@@ -4,11 +4,13 @@ import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import { createGlobalStyle } from 'styled-components';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { normalize } from 'polished';
 
 import { MainPage, UserPage, ReposPage } from 'Components';
 import { Text, Container, StyledIcon } from 'Modules';
 
 const Global = createGlobalStyle`
+  ${normalize()};
   body {
     overflow-y: overlay;
     transition: all 0.2s linear;
@@ -22,6 +24,24 @@ const Global = createGlobalStyle`
             background: '#24292e',
             color: '#fff',
           }};
+  }
+  :root {
+    font-size: calc(0.5em + 0.6vw);
+    font-family: "Segoe UI", Helvetica, Arial,sans-serif ;
+  }
+  ::before,
+  ::after {
+    box-sizing: inherit
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
