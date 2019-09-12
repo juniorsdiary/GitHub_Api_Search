@@ -6,7 +6,7 @@ export const fetchUsersData = (searchValue, pageInd, perPageNum, sortingOptions)
   const { sorting, order, cmd } = sortingOptions;
   const url_name = `${constants.API_BASE}/search/${constants.USERS}?q=`;
   let options = `&page=${pageInd}&per_page=${perPageNum}&sort=${cmd}&order=${order}`;
-  axios({ method: 'get', url: `${url_name}${searchValue}${options}`, headers: { Authorization: `token ${constants.AUTH}` } }).then(data => {
+  axios({ method: 'get', url: `${url_name}${searchValue}${options}` }).then(data => {
     dispatch({
       type: types.FETCH_USERS_DATA,
       payload: data.data,
@@ -26,7 +26,7 @@ export const fetchUsersData = (searchValue, pageInd, perPageNum, sortingOptions)
 export const fetchUser = login => dispatch => {
   dispatch({ type: types.DATA_FETCHING, payload: true });
   const url = `${constants.API_BASE}/${constants.USERS}/${login}`;
-  axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(data => {
+  axios({ method: 'get', url }).then(data => {
     dispatch({
       type: types.FETCH_USER,
       payload: data.data,

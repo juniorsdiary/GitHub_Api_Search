@@ -10,7 +10,7 @@ const TabContent = ({ active, search, total, MapComponent }) => {
     let isMounted = true;
     const url = `${constants.API_BASE}/${search}`;
     const fetchData = async () =>
-      await axios({ method: 'get', url, headers: { Authorization: `token ${constants.AUTH}` } }).then(({ data }) => {
+      await axios({ method: 'get', url }).then(({ data }) => {
         if (isMounted) {
           setData(data);
         }
